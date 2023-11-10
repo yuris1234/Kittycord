@@ -19,7 +19,9 @@ ApplicationRecord.transaction do
     User.create!(
       username: 'Demo-lition', 
       email: 'demo@user.io', 
-      password: 'password'
+      password: 'password',
+      pfp_url: 'profilepic',
+      status: 'offline'
     )
   
     # More users
@@ -27,7 +29,9 @@ ApplicationRecord.transaction do
       User.create!({
         username: Faker::Internet.unique.username(specifier: 3),
         email: Faker::Internet.unique.email,
-        password: 'password'
+        password: 'password',
+        pfp_url: 'pfp',
+        status: 'offline'
       }) 
     end
   

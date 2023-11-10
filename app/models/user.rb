@@ -10,13 +10,21 @@ class User < ApplicationRecord
     format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { in: 6..255 }, allow_nil: true
+  validates :pfp_url, presence: true
+  validates :status, presence: true, inclusion: {in: %w(offline online idle)}
 
   before_validation :ensure_session_token
 
   def self.find_by_credentials(credential, password) 
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
+    debugger
     user = User.find_by(field => credential)
-    user&.authenticate(password)
+    if user&.authenticate(password)
+      return user
+    else
+      return nil
+    end
+
   end
 
   def reset_session_token!
