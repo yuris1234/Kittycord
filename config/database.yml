@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: kittycord_production
-  username: kittycord
-  password: <%= ENV["KITTYCORD_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
