@@ -55,21 +55,21 @@ export default function SignupFormPage() {
                                 return <li key={error}>{error}</li>
                             })}
                         </ul>
-                        <label for="email">Email 
+                        <label className="label" for="email">Email 
                         </label>
-                            <input name="email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                        <label for="display-name">Display Name
+                            <input className="input" name="email" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                        <label className="label" for="display-name">Display Name
                         </label>
-                            <input name="display-name" value={displayName} onChange={(e) => {setDisplayName(e.target.value)}}/>
-                        <label for="username">Username 
+                            <input className="input" name="display-name" value={displayName} onChange={(e) => {setDisplayName(e.target.value)}}/>
+                        <label className="label" for="username">Username 
                         </label>
-                            <input name="username" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
-                        <label for="password">Password 
+                            <input className="input" name="username" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
+                        <label className="label" for="password">Password 
                         </label>
-                            <input name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                        <label for="month">Month
+                            <input className="input" name="password" value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                        <label className="label" for="month">Month
                         </label>
-                            <select name="month" onChange={(e) => {setMonth(e.target.value)}}>
+                            <select className="input" name="month" onChange={(e) => {setMonth(e.target.value)}}>
                                 <option disabled defaultValue={month}>Month</option>
                                 <option value='January'>January</option>
                                 <option value='February'>February</option>
@@ -84,17 +84,17 @@ export default function SignupFormPage() {
                                 <option value='November'>November</option>
                                 <option value='December'>December</option>
                             </select>
-                        <label for="day">Day 
+                        <label className="label" for="day">Day 
                         </label>
-                            <select name="day" onChange={(e) => {setDay(e.target.value)}}>
+                            <select className="input" name="day" onChange={(e) => {setDay(e.target.value)}}>
                                 <option disabled defaultValue={day}>Day</option>
                                 {days.map((num) => {
                                     return <option key={num} value={num}>{num}</option>
                                 })}
                             </select>
-                        <label for="year">Year 
+                        <label className="label" for="year">Year 
                         </label>
-                            <select name="year" onChange={(e) => {setYear(e.target.value)}}>
+                            <select className="input" name="year" onChange={(e) => {setYear(e.target.value)}}>
                                 <option disabled defaultValue={year}>Year</option>
                                 {years.map((num) => {
                                     return <option key={num} value={num}>{num}</option>
