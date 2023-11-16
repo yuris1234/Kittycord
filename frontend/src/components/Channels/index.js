@@ -1,13 +1,14 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchUser } from "../../store/user";
 
 export default function Channels() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
-        // dispatch(fetchCurrentUser())
+        dispatch(fetchUser(user.id))
     })
 
     return (
