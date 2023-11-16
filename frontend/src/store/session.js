@@ -77,10 +77,12 @@ const storeCurrentUser = (user) => {
 const initialState = {user: JSON.parse(sessionStorage.getItem("currentUser"))};
 
 const sessionReducer = (state = initialState, action) => {
+    const nextState = {...Object.freeze(initialState)};
     switch (action.type) {
         case RECEIVE_SESSION:
-            const newState = {...state, ...action.user};
-            return newState;
+            // debugger
+            nextState.user = action.user.user
+            return nextState;
         case REMOVE_SESSION:
             return { ...state, user: null }
         default:

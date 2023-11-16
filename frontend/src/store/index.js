@@ -2,11 +2,15 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import usersReducer from './user';
+import dmsReducer from './dm';
+import messagesReducer from './message';
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
-    users: usersReducer
+    users: usersReducer,
+    dms: dmsReducer,
+    messages: messagesReducer
 })
 
 let enhancer;

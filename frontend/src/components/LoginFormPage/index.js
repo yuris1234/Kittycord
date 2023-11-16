@@ -3,7 +3,7 @@ import { useState } from "react";
 import { login } from "../../store/session";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+// import './LoginForm.css';
 import LoginBackground from "../../assets/login";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -52,7 +52,7 @@ function LoginFormPage() {
                     </div>
     
                     <form className="login-form" onSubmit={handleSubmit}>
-                        {errors.map((error) => {return <li key={error}>{error}</li>})}
+                        {/* {errors.map((error) => {return <li key={error}>{error}</li>})} */}
                         <label className="label" for="credential">Username or Email <span className="login-span">*</span>
                         </label>
                         <input name="email" className="input" value={credential} onChange={credentialChange} />
