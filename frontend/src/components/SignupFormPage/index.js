@@ -54,9 +54,9 @@ export default function SignupFormPage() {
                     <h1 className="header">Create an Account</h1>
                     <form className="login-form" onSubmit={handleSubmit}>
                         <ul>
-                            {errors.map((error) => {
+                            {/* {errors.map((error) => {
                                 return <li key={error}>{error}</li>
-                            })}
+                            })} */}
                         </ul>
                         <label className="label" for="email">Email <span className="login-span">*</span>
                         </label>
