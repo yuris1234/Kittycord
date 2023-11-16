@@ -15,7 +15,7 @@ function LoginFormPage() {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (sessionUser) return <Redirect to="/channels" />;
+    if (sessionUser.user) return <Redirect to="/channels" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,7 +47,7 @@ function LoginFormPage() {
             <div className="form-container">
                 <div className="form-wrapper">
                     <div className="login-welcome">
-                        <h1>Welcome back!</h1>
+                        <h1 className="header">Welcome back!</h1>
                         <div className="subheader">We're so excited to see you again!</div>
                     </div>
     

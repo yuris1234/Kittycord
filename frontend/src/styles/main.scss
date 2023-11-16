@@ -96,17 +96,20 @@ body {
     box-sizing: border-box;
     font-size: 18px;
     width: 400px;
-    top: 15%;
+    top: 5%;
+    // bottom: 35%;
     position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-right: 32px;
-    padding-left: 32px;
-    padding-top: 32px;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 35px;
     padding-bottom: 55px;
-
+    border-color: red;
+    border-width: thick;
+    z-index: 3;
 }
 .login-form {
     display: flex;
@@ -136,12 +139,16 @@ body {
     height: 44px;
     cursor: pointer;
     margin-top: 20px;
+    color: #f2f3f5;
+    font-weight: 600;
 }
 
 .label {
     color: #b5bac1;
     font-size: 12px;
-    // vertical-align: initial;
+    margin-top: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .input {
@@ -159,10 +166,16 @@ body {
     padding: 10px;
 }
 
+.header {
+    font-weight: 900;
+    font-size: 24px;
+}
+
 .subheader {
     color: #b5bac1;
     font-size: 16px;
     margin: 15px;
+    font-weight: 400;
 }
 
 .login-span {
@@ -171,6 +184,10 @@ body {
 }
 
 .register-text {
+    position: absolute;
+    left: 8%;
+    font-size: 14px;
+    color: #b5bac1;
 
 }
 
