@@ -7,14 +7,14 @@ export default function Channels() {
     const user = useSelector(state => state.session.user)
 
     useEffect(() => {
-        dispatch(fetchCurrentUser())
+        // dispatch(fetchCurrentUser())
     })
 
     return (
         <>
-            {user.servers.map((serverId) => {
+            {/* {user.servers.map((serverId) => {
                 return <Link to={`/servers/{serverId}`}></Link>
-            })}
+            })} */}
             <h1>Hello from Channels</h1>
         </>
     )

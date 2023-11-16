@@ -47,7 +47,7 @@ function LoginFormPage() {
             <div className="form-container">
                 <div className="form-wrapper">
                     <div className="login-welcome">
-                        <h1>Welcome back!</h1>
+                        <h1 className="header">Welcome back!</h1>
                         <div className="subheader">We're so excited to see you again!</div>
                     </div>
     
