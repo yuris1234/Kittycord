@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -14,6 +14,7 @@ function LoginFormPage() {
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+
 
     if (sessionUser.user) return <Redirect to="/channels" />;
 

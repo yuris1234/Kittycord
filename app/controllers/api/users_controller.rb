@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
     # debugger
     if @user.save
       login!(@user)
-      render 'api/sessions/show'
+      render :show
     else
       render json: {errors: @user.errors.full_messages}, status: :unprocessable_entity
     end
@@ -13,6 +13,7 @@ class Api::UsersController < ApplicationController
 
   def show 
     @user = User.find_by(id: params[:id]);
+    # debugger
     if @user 
       render :show
     else

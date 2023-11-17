@@ -3,20 +3,20 @@ import { Link, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../store/user";
 import { logout } from "../../store/session";
+import DmsIndex from "../DmsIndex";
 
 export default function Channels() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
 
-    debugger
     // const channelUser = useSelector(state => state.user[currentUser.id])
 
     // const friends = useSelector(state => Object.values(state.friends).select((friend) => {
     //     channelUser.friends.includes(friend.id)
     // }))
-
+    // debugger
+    
     useEffect(() => {
-        debugger
         if (currentUser) {
             dispatch(fetchUser(currentUser.id))
         }
@@ -37,6 +37,7 @@ export default function Channels() {
             })} */}
             <h1>Hello from Channels</h1>
             <button onClick={handleLogout}>Logout</button>
+            {/* <DmsIndex /> */}
         </>
     )
 }

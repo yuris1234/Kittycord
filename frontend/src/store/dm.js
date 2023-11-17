@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf";
+import { receiveMessages } from "./message";
 
 export const RECEIVE_DM = "dms/RECEIVE_DM";
 
@@ -8,9 +9,10 @@ const receiveDm = (dm) => ({
 })
 
 export const fetchDm = (dmId) => async (dispatch) => {
-    const res = await csrfFetch(`api/dms/${dmId}`);
+    const res = await csrfFetch(`/api/dms/${dmId}`);
     const data = await res.json();
     dispatch(receiveDm(data));
+    dispatch(receiveMessages(data));
 }
 
 const dmsReducer = (state = {}, action) => {
