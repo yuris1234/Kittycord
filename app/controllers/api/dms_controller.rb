@@ -1,6 +1,7 @@
-class API::DmsController < ApplicationController
-    def create
-
+class Api::DmsController < ApplicationController
+    def index
+        @dms = Dm.all 
+        render :index
     end
 
     def show

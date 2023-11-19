@@ -1,3 +1,4 @@
+
 json.message do
-  json.extract! @message, :id, :body, :author_id
+  json.partial! 'api/messages/message', message: @message
 end

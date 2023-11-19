@@ -1,11 +1,11 @@
 import csrfFetch from "./csrf";
-import { receiveMessages } from "./message";
+import { receiveMessages } from "./message"
 
 export const RECEIVE_DM = "dms/RECEIVE_DM";
 
-const receiveDm = (dm) => ({
+export const receiveDm = (dm) => ({
     type: RECEIVE_DM,
-    dm
+    payload: dm
 })
 
 export const fetchDm = (dmId) => async (dispatch) => {
@@ -19,7 +19,9 @@ const dmsReducer = (state = {}, action) => {
     const nextState = {...Object.freeze(state)}
     switch (action.type) {
         case RECEIVE_DM:
-            return {...nextState, ...action.dm};
+            // debugger
+            nextState[action.payload.dm.id] = action.payload.dm
+            return nextState;
         default:
             return state;
     }
