@@ -7,9 +7,10 @@ import { createMessage } from "../store/message";
 import { fetchDm } from "../store/dm";
 import { receiveMessage } from "../store/message";
 import { getMessages } from "../store/message";
+import Message from "./Message";
 
-export default function Dm() {
-    const { dmId } = useParams();
+export default function Dm({dmId}) {
+    // const { dmId } = useParams();
     const dispatch = useDispatch();
     const [body, setBody] = useState('');
     const [usersInDm, setUsersInDms] = useState({});
@@ -19,7 +20,7 @@ export default function Dm() {
 
     useEffect(() => {
         dispatch(fetchDm(dmId))
-    }, [])
+    }, [dmId])
 
     useEffect(() => {
         const subscription = consumer.subscriptions.create(
@@ -43,15 +44,13 @@ export default function Dm() {
 
     return (
         <>
-            <h1>Hello from Dm </h1>
             <ul>
                 {messages.map((message) => {
-                    return <li>{message.body}</li>
+                    return <Message message={message}/>
                 })}
             </ul>
-            {currentUser.username}
             <form>
-                <textarea onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
+                <textarea className="send-message" onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
                     if (e.code === 'Enter' && !e.shiftKey) {
                         handleSubmit(e);
                     }

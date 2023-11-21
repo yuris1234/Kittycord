@@ -20,11 +20,22 @@ class Api::MessagesController < ApplicationController
     end
 
     def destroy
+        message = Message.find_by(id: params[:id])
+        message.destroy
+        render json: nil, status: :ok
+    end
 
+    def update 
+        @message = Message.find_by(id: params[:id])
+        if @message.update(message_params) 
+            render :show
+        else
+            render json: @message.errors.full_messages
+        end
     end
 
     private
     def message_params
-        params.require(:message).permit(:body,  :messageable_type, :messageable_id, :author_id)
+        params.require(:message).permit(:body, :messageable_type, :messageable_id, :author_id)
     end
 end

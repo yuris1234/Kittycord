@@ -4,13 +4,15 @@ import sessionReducer from './session';
 import usersReducer from './user';
 import dmsReducer from './dm';
 import messagesReducer from './message';
+import modalsReducer from './modal';
 
 
 const rootReducer = combineReducers({
     session: sessionReducer,
     users: usersReducer,
     dms: dmsReducer,
-    messages: messagesReducer
+    messages: messagesReducer,
+    modals: modalsReducer
 })
 
 let enhancer;

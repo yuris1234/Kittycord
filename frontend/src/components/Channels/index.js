@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../store/user";
 import { logout } from "../../store/session";
 import DmsIndex from "../DmsIndex";
+import NavBar from "../NavBar";
 
 export default function Channels() {
     const dispatch = useDispatch();
@@ -32,12 +33,15 @@ export default function Channels() {
 
     return (
         <>
-            {/* {user.servers.map((serverId) => {
-                return <Link to={`/servers/{serverId}`}></Link>
-            })} */}
-            <h1>Hello from Channels</h1>
-            <button onClick={handleLogout}>Logout</button>
-            {/* <DmsIndex /> */}
+            <div className="channel-container">
+                <NavBar />
+                <DmsIndex/>
+                <div className="profile">
+                    <img src={`${currentUser.pfp_url}`} />
+                    <p>{currentUser.username}</p>
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
+            </div>
         </>
     )
 }

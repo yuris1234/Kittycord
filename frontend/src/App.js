@@ -4,10 +4,12 @@ import SignupFormPage from "./components/SignupFormPage";
 import Splash from "./components/Splash";
 import Channels from "./components/Channels";
 import DmsIndex from "./components/DmsIndex";
+import Modal from "./components/Modal";
 
 function App() {
   return (
     <>
+      {/* <Modal/> */}
       <Switch>
         <Route exact path="/">
           <Splash />
@@ -20,9 +22,6 @@ function App() {
         </Route>
         <Route path="/signup">
           <SignupFormPage />
-        </Route>
-        <Route path="/dms">
-          <DmsIndex />
         </Route>
       </Switch>
     </>
