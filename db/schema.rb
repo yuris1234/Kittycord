@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_17_152748) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_22_131008) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_152748) do
   create_table "dms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.bigint "friender", null: false
+    t.bigint "friended", null: false
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friender", "friended"], name: "index_friends_on_friender_and_friended", unique: true
   end
 
   create_table "membership_joins", force: :cascade do |t|
@@ -65,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_152748) do
   end
 
   add_foreign_key "channels", "servers"
+  add_foreign_key "friends", "users", column: "friended"
+  add_foreign_key "friends", "users", column: "friender"
   add_foreign_key "membership_joins", "users"
   add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "servers", "users", column: "owner_id"
