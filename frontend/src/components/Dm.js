@@ -28,7 +28,7 @@ export default function Dm({dmId}) {
                 setUserInDms(member);
             }
         })
-    }, [])
+    }, [dmId])
 
     useEffect(() => {
         const subscription = consumer.subscriptions.create(

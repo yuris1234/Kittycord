@@ -56,7 +56,7 @@ const Message = ({ message }) => {
                             </ul>
                             <p>{message.body}</p>
                             <div>
-                                {showEdit && modal.modal==='edit' && modal.id===message.id && (
+                                {modal.modal==='edit' && modal.id===message.id && (
                                     <EditMessage message={message} />
                                 )}
                             </div>
