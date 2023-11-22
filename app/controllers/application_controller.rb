@@ -41,6 +41,11 @@ class ApplicationController < ActionController::API
         !!current_user
     end
 
+    def from_template(template, locals = {})
+        # debugger
+        JSON.parse(self.class.render(:json, template: template, locals: locals))
+    end
+
     private
 
     def snake_case_params

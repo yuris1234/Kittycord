@@ -11,6 +11,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show 
+    @user = User.find_by(id: params[:id]);
+    # debugger
+    if @user 
+      render :show
+    else
+      render json: {errors: @user.errors.full_messages}
+    end
+  end
+
   private
 
   def user_params

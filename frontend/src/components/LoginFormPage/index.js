@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+// import './LoginForm.css';
 import LoginBackground from "../../assets/login";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -15,11 +15,12 @@ function LoginFormPage() {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
+
     if (sessionUser.user) return <Redirect to="/channels" />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
+        setErrors(prevErrors => [] );
         return dispatch(login({credential, password}))
             .catch(async (res) => {
                 let data;
@@ -28,9 +29,9 @@ function LoginFormPage() {
                 } catch {
                     data = await res.text();
                 }
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
+                if (data?.errors) setErrors(prevErrors => [...prevErrors, ...data.errors]);
+                else if (data) setErrors(prevErrors => [...prevErrors, ...data]);
+                else setErrors(prevErrors => [...prevErrors, ...res.statusText]);
             });
     }
 
@@ -52,7 +53,9 @@ function LoginFormPage() {
                     </div>
     
                     <form className="login-form" onSubmit={handleSubmit}>
-                        {errors.map((error) => {return <li key={error}>{error}</li>})}
+                        <ul className="errors">
+                            {errors && errors.map((error) => {return <li key={error}>{error}</li>})}
+                        </ul>
                         <label className="label" for="credential">Username or Email <span className="login-span">*</span>
                         </label>
                         <input name="email" className="input" value={credential} onChange={credentialChange} />

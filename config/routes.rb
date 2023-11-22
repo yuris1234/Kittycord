@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:create]
+    resources :users, only: [:create, :show]
     resource :session, only: [:show, :create, :destroy]
+    resources :dms, only: [:show]
+    resources :messages, only: [:create, :show, :destroy, :update]
   end
   get '*path', to: "static_pages#frontend_index"
   
