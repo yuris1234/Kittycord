@@ -9,10 +9,10 @@ class Api::MessagesController < ApplicationController
     def create
         @message = Message.new(message_params)
         if @message.save
-            DmsChannel.broadcast_to @message.messageable, @message
+            DmsChannel.broadcast_to @message.messageable, JSON.parse(render :show)
                 # from_template('api/messages/show',  {message: @message})
             # debugger
-            JSON.parse(render :show)
+            # JSON.parse(render :show)
             # render json: nil, status: :ok
         else
             render json: {errors: ['Unable to save message']}

@@ -35,7 +35,7 @@ export default function Channels() {
         <>
             <div className="channel-container">
                 <NavBar />
-                <DmsIndex/>
+                <DmsIndex user={currentUser}/>
                 <div className="profile">
                     <img src={`${currentUser.pfp_url}`} />
                     <p>{currentUser.username}</p>

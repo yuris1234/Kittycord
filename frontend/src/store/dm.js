@@ -1,5 +1,8 @@
 import csrfFetch from "./csrf";
 import { receiveMessages } from "./message"
+import { receiveUsers } from "./user";
+import { RECEIVE_MESSAGE } from "./message";
+import { RECEIVE_USER } from "./user";
 
 export const RECEIVE_DM = "dms/RECEIVE_DM";
 export const RECEIVE_DMS = "dms/RECEIVE_DMS";
@@ -18,7 +21,12 @@ export const fetchDm = (dmId) => async (dispatch) => {
     const res = await csrfFetch(`/api/dms/${dmId}`);
     const data = await res.json();
     dispatch(receiveDm(data));
-    dispatch(receiveMessages(data));
+}
+
+export const fetchDms = () => async (dispatch) => {
+    const res = await csrfFetch('/api/dms');
+    const data = await res.json();
+    dispatch(receiveDms(data));
 }
 
 const dmsReducer = (state = {}, action) => {
@@ -29,6 +37,11 @@ const dmsReducer = (state = {}, action) => {
             return nextState;
         case RECEIVE_DMS:
             return {...nextState, ...action.payload.dms}
+        // case RECEIVE_MESSAGE:
+        //     debugger
+        //     return nextState;
+        case RECEIVE_USER:
+            return {...nextState, ...action.user.dms}
         default:
             return state;
     }

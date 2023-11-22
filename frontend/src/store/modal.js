@@ -1,10 +1,11 @@
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 
-export const openModal = (modal) => {
+export const openModal = (modal, messageId) => {
   return {
     type: OPEN_MODAL,
-    modal
+    modal,
+    messageId
   }
 }
 
@@ -14,15 +15,15 @@ export const closeModal = () => {
   }
 }
 
-const initialState = null;
+const initialState = {modal: null};
 
 
 const modalsReducer = (state=initialState, action) => {
     switch (action.type) {
         case OPEN_MODAL:
-          return action.modal
+          return {modal: action.modal, id: action.messageId}
         case CLOSE_MODAL:
-          return null;
+          return {modal: null}
         default:
           return state;
     }

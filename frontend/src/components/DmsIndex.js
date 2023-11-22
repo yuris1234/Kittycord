@@ -10,12 +10,9 @@ import { fetchUser } from "../store/user";
 import FriendsIndex from "./FriendsIndex";
 
 
-export default function DmsIndex() {
+export default function DmsIndex({user}) {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
-    useEffect(() => {
-        dispatch(fetchUser(user.id))
-    }, [])
+
     // const dms = useSelector(state => 
     //     Object.values(state.dms).filter((dm) => {
     //         dm.members.includes(user.username);
@@ -23,13 +20,15 @@ export default function DmsIndex() {
     const dms = useSelector(state => state.dms)
     const modal = useSelector(state => state.modals);
     const [currentDm, setCurrentDm] = useState(null);
-    
+
     useEffect(() => {
-        dispatch(fetchUser(user.id))
-    }, [])
+
+    })
 
     const handleModal = (e) => {
-        dispatch(openModal('view'))
+        if (!modal.modal) {
+            dispatch(openModal('view'))
+        }
         setCurrentDm(e.target.value);
     }
 
@@ -37,22 +36,23 @@ export default function DmsIndex() {
         <>
             <div className="dms-container">
                 <div className="dms-wrapper">
+                    <h1>Direct Messages</h1>
                     <ul className="dms-list">
                         {Object.values(dms).map((dm) => {
-                            return <li className="dm" value={dm.id} onClick={handleModal}>{dm.members.join(', ')}</li>
+                            return <li className="dm" value={dm.id} onClick={handleModal}>{dm?.members[0]===user.username ? dm?.members[1] : dm?.members[0] }</li>
                         })}
                     </ul>
-                    {modal && (
-                        <div className="dm-show">
-                            <Dm dmId={currentDm}/>
-                        </div>
-                    )}
-                    {!modal && (
-                        <div>
-                            <FriendsIndex user={user}/>
-                        </div>
-                    )}
                 </div>
+                {modal.modal && (
+                    <div className="dm-show">
+                        <Dm dmId={currentDm}/>
+                    </div>
+                )}
+                {!modal.modal && (
+                    <div>
+                        <FriendsIndex user={user}/>
+                    </div>
+                )}
             </div>
         </>
     )
