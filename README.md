@@ -1,24 +1,36 @@
-# README
+# Kittycord
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+Kittycord is a clone of Discord, a text/voice chat app marketed towards gamers, but used by people of all ages to connect to their friends and more online communities. Because it is a clone, I aimed to replicate Discord's appearance as much as I feasibly could. I personally love Discord's layout and UX, which is why I chose it for my project.
 
-Things you may want to cover:
+## Features (to be updated)
+1. User Authentication
 
-* Ruby version
+Users can sign up, login, and logout. Depending on whether or not the user is logged in, will also display a different page. I also implemented error handling.
 
-* System dependencies
+![Login screen](./login.png)
 
-* Configuration
+![Signup screen](./signup.png)
 
-* Database creation
+2. Live Messaging
 
-* Database initialization
+Users can send messages live to other users that they are friends with or have direct messages with. 
 
-* How to run the test suite
+In my message component, I also implemented hover events and modals, so that the edit/delete buttons only show up when the message is hovered:
 
-* Services (job queues, cache servers, search engines, etc.)
+![Message component](./message.png)
+![Message hover comparison](./hover.png)
 
-* Deployment instructions
+3. Updating and deleting messages
 
-* ...
+Users can read, send, edit, and delete their messages live. When the user edits a message, it opens up a modal for that message that goes away when you either update the message or press escape:
+
+![Modal component](./modal.png)
+![Open modal](./modalexample.png)
+![Modals reducer](./modalsreducer.png)
+
+## Technologies, Libraries, APIs
+- npm 
+- React
+- Rails
+
