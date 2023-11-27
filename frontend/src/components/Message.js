@@ -13,9 +13,6 @@ const Message = ({ message }) => {
     const author = useSelector(state => state.users[message.authorId])
     const currentUser = useSelector(state => state.session.user)
 
-    // console.log(author);
-
-
     const handleHover = (e) => {
         setShowEdit(true)
     }
