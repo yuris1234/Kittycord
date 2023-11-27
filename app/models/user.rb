@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_many :membership_joins
   has_many :dms, through: :membership_joins, source_type: "Dm", source: :membership
   has_many :messages, foreign_key: :author_id, inverse_of: :author
+  has_many :friends, foreign_key: :friended
+  has_many :requested_friends
+  has_many :pending_friends
 
   def self.find_by_credentials(credential, password) 
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username

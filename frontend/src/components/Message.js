@@ -42,13 +42,15 @@ const Message = ({ message }) => {
     return (
         <>
             <div className="message-pfp">
-                <img className="pfp" src="./unknown.png" />
+                <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
                 <div className="message" onMouseEnter={handleHover} onMouseLeave={handleNoHover}>
                     {showEdit && (
                         <ul className="message-show">
                             <ul className="message-profile">
-                                <li>{author?.username}</li>
-                                <li>{formatter.format(new Date(message.createdAt))}</li>
+                                <div className="message-details">
+                                    <li>{author?.username}</li>
+                                    <li className="date">{formatter.format(new Date(message.createdAt))}</li>
+                                </div>
                                 <div className="edit-button">
                                     <button onClick={handleModal}>Edit</button>
                                     <button onClick={handleDelete}>Delete</button>
@@ -56,7 +58,7 @@ const Message = ({ message }) => {
                             </ul>
                             <p>{message.body}</p>
                             <div>
-                                {showEdit && modal.modal==='edit' && modal.id===message.id && (
+                                {modal.modal==='edit' && modal.id===message.id && (
                                     <EditMessage message={message} />
                                 )}
                             </div>
@@ -66,8 +68,10 @@ const Message = ({ message }) => {
                         <>
                             <ul className="message-show">
                                 <ul className="message-profile">
-                                    <li>{author?.username}</li>
-                                    <li>{formatter.format(new Date(message.createdAt))}</li>
+                                    <div className="message-details">
+                                        <li>{author?.username}</li>
+                                        <li className="date">{formatter.format(new Date(message.createdAt))}</li>
+                                    </div>
                                 </ul>
                                 <p>{message.body}</p>
                             </ul>
