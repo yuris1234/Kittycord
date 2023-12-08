@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { closeModal } from "../store/modal";
+import { closeModal } from "../../store/modal";
 
 function NavBar() {
     const dispatch = useDispatch();

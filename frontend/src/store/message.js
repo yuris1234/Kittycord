@@ -22,9 +22,9 @@ export const receiveMessages = (messages) => ({
 })
 
 export const getMessages = dmId => state => {
-    return Object.values(state.messages).filter(message => message.messageableId === parseInt(dmId))
+    return Object.values(state?.messages).filter(message => message.messageableId === parseInt(dmId))
 }
-
+    
 export const updateMessage = message => async (dispatch) => {
     const res = await csrfFetch(`/api/messages/${message.id}`, {method: 'PATCH', body: JSON.stringify(message), headers: {'Content-Type': 'application/json'}});
     const data = await res.json();

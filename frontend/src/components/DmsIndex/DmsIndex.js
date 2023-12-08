@@ -1,36 +1,21 @@
-import Dm from "./Dm";
+import Dm from "../Dm/Dm";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { openModal } from "../store/modal";
+import { openModal } from "../../store/modal";
 import { useState } from "react";
-import { fetchUser } from "../store/user";
-import FriendsIndex from "./FriendsIndex";
+import { fetchUser } from "../../store/user";
+import DmsIndexItem from "../DmsIndexItem/DmsIndexItem";
+import FriendsIndex from "../FriendsIndex/FriendsIndex";
 
 
 export default function DmsIndex({user}) {
     const dispatch = useDispatch();
-
-    // const dms = useSelector(state => 
-    //     Object.values(state.dms).filter((dm) => {
-    //         dm.members.includes(user.username);
-    //     }))
     const dms = useSelector(state => state.dms)
     const modal = useSelector(state => state.modals);
     const [currentDm, setCurrentDm] = useState(null);
-
-    useEffect(() => {
-
-    })
-
-    const handleModal = (e) => {
-        if (!modal.modal) {
-            dispatch(openModal('view'))
-        }
-        setCurrentDm(e.target.value);
-    }
 
     return (
         <>
@@ -39,7 +24,7 @@ export default function DmsIndex({user}) {
                     <h1>Direct Messages</h1>
                     <ul className="dms-list">
                         {Object.values(dms).map((dm) => {
-                            return <li className="dm" value={dm.id} onClick={handleModal}>{dm?.members[0]===user.username ? dm?.members[1] : dm?.members[0] }</li>
+                            return <DmsIndexItem setCurrentDm={setCurrentDm} dmId={dm.id}/>
                         })}
                     </ul>
                 </div>

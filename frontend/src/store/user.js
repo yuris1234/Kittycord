@@ -5,9 +5,21 @@ import { RECEIVE_DM } from "./dm";
 export const RECEIVE_USER = "users/RECEIVE_USER";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
 
+export const getUsers = (userIds) => (state) => {
+    const holder = []
+    if (state.users) {
+        userIds?.forEach((userId) => {
+            if (state.users[userId]) {
+                holder.push(state.users[userId])
+            }
+        })
+    }
+    return holder
+}
+
 export const receiveUser = (user) => ({
     type: RECEIVE_USER,
-    user
+    payload: user
 })
 
 export const receiveUsers = (users) => ({
@@ -26,8 +38,7 @@ const usersReducer = (state = {}, action) => {
     const nextState = {...Object.freeze(state)}
     switch (action.type) {
         case RECEIVE_USER:
-            nextState[action.user.user.id] = {...action.user.user};
-            return nextState;
+            return {...nextState, ...action.payload.users}
         case RECEIVE_DM:
             return {...nextState, ...action.payload.users}
         default:

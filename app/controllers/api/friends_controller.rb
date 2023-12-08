@@ -5,33 +5,17 @@ class Api::FriendsController < ApplicationController
     end
 
     def show
-        @friendship = Friend.find(params[:id])
-        @friender = User.find_by(@frienship[:friender]);
-        @friended = User.find_by(@friendship[:friended]);
+        @friend = Friend.find(params[:id])
         
-        if @friendship && @friender && @friended 
+        if @friend
             render :show
         else
-            render json: {errors: 'Friendship status not found'}
-        end
-    end
-
-    def update
-        @friendship = Friend.find(params[:id])
-        @friender = User.find_by(@frienship[:friender]);
-        @friended = User.find_by(@friendship[:friended]);
-
-        if @friendship.update(friend_params)
-            render :show
-        else 
-            render json: {@friendship.errors.full_messages}, status: 422
+            render json: {errors: 'Friendship not found'}
         end
     end
 
     def create
         @friend = Friend.new(friend_params)
-        @friender = User.find_by(@frienship[:friender]);
-        @friended = User.find_by(@friendship[:friended]);
 
         if @friend.save
             render :show

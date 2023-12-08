@@ -1,10 +1,12 @@
 messages = @dm.messages.pluck(:id)
-members = @dm.members.pluck(:username)
+members = @dm.members.pluck(:id)
 
 json.dm do 
-    json.extract! @dm, :id 
-    json.messages messages
-    json.members members
+    json.set! @dm.id do 
+        json.extract! @dm, :id 
+        json.messages messages
+        json.members members
+    end
 end
 
 json.messages do 

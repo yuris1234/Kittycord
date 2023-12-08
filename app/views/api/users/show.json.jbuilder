@@ -12,9 +12,11 @@ dmsArray = []
 end
 
 json.users do
-  json.extract! @user, :id, :email, :username
-  json.friendIds friendsArray
-  json.dmIds dmsArray
+  json.set! @user.id do 
+    json.extract! @user, :id, :email, :username
+    json.friendIds friendsArray
+    json.dmIds dmsArray
+  end
   @user.friends1.each do |friend|
     json.set! friend.id do 
       json.extract! friend, :id, :email, :username
@@ -25,12 +27,18 @@ json.users do
       json.extract! friend, :id, :email, :username
     end
   end
+  @user.dms.each do |dm|
+    dm.members.each do |member|
+      json.set! member.id do
+        json.extract! member, :id, :email, :username
+      end
+    end
+  end
 end
 
 json.dms do 
   @user.dms.each do |dm|
-    members = dm.members
-    members = members.select {|member| member.id != @user.id}  
+    members = dm.members.map {|member| member.id}
     json.set! dm.id do 
       json.extract! dm, :id
       json.members members

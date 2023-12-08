@@ -34,6 +34,7 @@
     // background-color: #2b2d31;
     background-color: #313338;
     color: #b5bac1;
+    height: 100%;
 }
 
 .dms-wrapper {
@@ -43,6 +44,7 @@
     width: 250px;
     height: 100%;
     background-color: #2b2d31;
+    height: 100%;
 }
 
 .dms-list {
@@ -55,12 +57,14 @@
     display: flex;
     // border: solid red;
     justify-content: space-between;
-    width: 30%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    width: 500px;    
+    margin-left: 350px;
+    text-align: center;
+    // margin-right: 25%;
+    margin-bottom: 10px;
+    margin-top: 10px;
     color: #b5bac1;
+    height: 20px;
 }
 
 .nav-button {
@@ -88,7 +92,8 @@ li:hover {
     position: absolute;
     margin-left: 300px;
     bottom: 75px;
-    // border: solid red;      
+    // border: solid red;   
+    height: 100%;   
 }
 
 .send-message {
@@ -124,17 +129,11 @@ li:hover {
     margin-right: 10px;
 }
 
-.edit-button {
-    position: absolute;
-    right: 0;
-    margin-bottom: 10px;
-    // border: solid red;
-}
-
 .message-show {
     margin-left: 15px;
     margin-bottom: 25px;
     width: 1000px;
+    max-height: 10px;
 }
 
 .message-pfp {
