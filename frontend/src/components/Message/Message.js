@@ -11,25 +11,10 @@ import { useHover } from "@uidotdev/usehooks";
 const Message = ({ message }) => {
     const dispatch = useDispatch();
     const [hovered, setHovered] = useState(false);
-    // const [ref, hovering] = useHover();
     const modal = useSelector(state => state.modals);
     const author = useSelector(state => state.users[message.authorId])
     const [body, setBody] = useState(message.body)
     const currentUser = useSelector(state => state.session.user)
-
-    // const [scrolledY, setScrolledY] = useState(0);
-
-    // const handleScroll = () => {
-    //     const scrollY = window.scrollY;
-    //     setScrolledY(scrollY);
-    //     console.log(scrolledY)
-    // };
-    // useEffect(() => {
-    //     window.addEventListener("scroll", handleScroll);
-    //     return () => {
-    //     window.removeEventListener("scroll", handleScroll);
-    //     };
-    //   }, [scrolledY]);
 
     const handleHover = (e) => {
         setHovered(true)

@@ -96,12 +96,6 @@ li:hover {
     height: 100%;   
 }
 
-.send-message {
-    position: absolute;
-    // border: solid red;
-    width: 1000px;
-}
-
 .message {
     color: #dbdee1;
     margin-top: 5p  x;
@@ -109,14 +103,6 @@ li:hover {
     // text-align: center;
     // border: solid red;
 
-}
-
-.message-details {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    // border: solid red;
 }
 
 .message-profile {
@@ -147,9 +133,4 @@ li:hover {
     object-fit: cover;
     border-radius: 50%;
     border: solid red;
-}
-
-.date {
-    color: #b5bac1;
-    font-size: 12px;
 }
