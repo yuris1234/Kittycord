@@ -1,3 +1,23 @@
 .dms-container {
+    display: flex;
+    margin-left: 100px;
+    overflow: scroll;
     max-height: 600px;
+    height: 100%;
+    background-color: #313338;
+    height: 100%;
+    width: 100%;
+}
+
+.dms-list > li:hover {
+    background-color: rgba(255,255,255, 0.1);
+    cursor: pointer
+}
+
+.dms-list > li {
+    width: 100%;
+}
+
+.dms-wrapper {
+    width: 200px;
 }

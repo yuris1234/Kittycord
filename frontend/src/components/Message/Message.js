@@ -10,19 +10,18 @@ import { useHover } from "@uidotdev/usehooks";
 
 const Message = ({ message }) => {
     const dispatch = useDispatch();
-    const [hovered, setHovered] = useState(false);
+    // const [hovered, setHovered] = useState(false);
     const modal = useSelector(state => state.modals);
     const author = useSelector(state => state.users[message.authorId])
     const [body, setBody] = useState(message.body)
     const currentUser = useSelector(state => state.session.user)
+    const [editable, setEditable] = useState(false);
 
-    const handleHover = (e) => {
-        setHovered(true)
-    }
-
-    const handleNoHover = (e) => {
-        setHovered(false)
-    }
+    useEffect(() => {
+        if (author.id === currentUser.id) {
+            setEditable(true);
+        }
+    }, [currentUser, author])
 
     const handleDelete = (e) => {
         dispatch(deleteMessage(message.id))
@@ -41,27 +40,38 @@ const Message = ({ message }) => {
         dispatch(openModal('view'));
     }
 
-    const formatter = new Intl.DateTimeFormat("en-GB", {
-        year: "numeric",
-        month: "long",
-        day: "2-digit"
-    });
+    // const formatter = new Intl.DateTimeFormat("en-GB", {
+    //     year: "numeric",
+    //     month: "long",
+    //     day: "2-digit"
+    // });
+
+    function formatter(createdAt) {
+        const date = new Date(createdAt);
+        let hours = date.getHours();
+        const minutes = ('0' + date.getMinutes()).slice(-2);
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; 
+        const formattedTime = `${hours}:${minutes} ${ampm}`;
+        return formattedTime;
+      }
     
 
 
     return (
         <>
-            <div className="message-pfp" onMouseEnter={handleHover} onMouseLeave={handleNoHover}>
+            <div className="message-pfp new" >
                 <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
                 <div className="message">
-                    <ul className="message-show">
+                    <ul className="message-show timed">
                         <ul className="message-profile">
                             <div className="message-details">
-                                <li>{author?.username}</li>
-                                <li className="date-message">{formatter.format(new Date(message.createdAt))}</li>
+                                <li className="message-username">{author?.username}</li>
+                                <li className="date-message">{formatter(message.createdAt)}</li>
                             </div>
-                            {hovered && (
-                            <div className="edit-button">
+                            {editable && (
+                            <div className="edit-button hide">
                                 <button onClick={handleModal}>Edit</button>
                                 <button onClick={handleDelete}>Delete</button>
                             </div>

@@ -3,8 +3,6 @@ import { Link, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../store/user";
 import { logout } from "../../store/session";
-// import DmsIndex from "../DmsIndex";
-// import NavBar from "../NavBar";
 import DmsIndex from "../DmsIndex/DmsIndex";
 import NavBar from "../NavBar/NavBar";
 

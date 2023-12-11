@@ -10,6 +10,7 @@ import { getMessages } from "../../store/message";
 import Message from "../Message/Message";
 import { getDm } from "../../store/dm";
 import { getUsers } from "../../store/user";
+import UntimedMessage from "../UntimedMessage/UntimedMessage";
 
 export default function Dm({dmId}) {
     const dispatch = useDispatch();
@@ -17,10 +18,9 @@ export default function Dm({dmId}) {
     let dm = useSelector(getDm(dmId));
     const currentUser = useSelector(state => state.session.user);
     const messages = useSelector(getMessages(dmId));
-    const members = useSelector(getUsers(dm?.members))
+    const members = useSelector(getUsers(dm?.members));
 
     const filteredMember = members.filter((member) => {
-        console.log(members)
         return member.id !== currentUser.id
     })[0]
 
@@ -48,12 +48,22 @@ export default function Dm({dmId}) {
         e.target.placeholder = `Message @${filteredMember.username}`
     }
 
+    let author = null;
+
     return (
         <>
             <ul className="dm-container">
-                    <li>{messages.map((message) => {
-                        return <Message key={message.id} message={message}/>
+                <li className="message-list">
+                    <li>{messages.map((message, i) => {
+                        if (author !== message.authorId) {
+                            author = message.authorId
+                            return <Message key={message.id} message={message}/>
+                        } else {
+                            return <UntimedMessage key={message.id} message={message}/>
+                        }
                     })}</li>
+                </li>
+            </ul>
                     <form className="send-container">
                     <textarea placeholder={`Message @${filteredMember?.username}`} className="send-message" onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
                         if (e.code === 'Enter' && !e.shiftKey) {
@@ -63,7 +73,6 @@ export default function Dm({dmId}) {
                     }}> 
                     </textarea>
                     </form>
-            </ul>
         </>
 
     )
