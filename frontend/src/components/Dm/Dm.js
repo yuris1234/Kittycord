@@ -32,7 +32,7 @@ export default function Dm({dmId}) {
         const subscription = consumer.subscriptions.create(
           { channel: 'DmsChannel', id: dmId },
           {
-            received: message  => {
+            received: ({message, user})  => {
                 dispatch(receiveMessage(message))
                 console.log('Received message ', message)
             }
