@@ -1,5 +1,6 @@
-import EditMessage from "./EditMessage";
-import { closeModal } from "../store/modal";
+// import EditMessage from "./EditMessage";
+import EditMessage from "../EditMessage/EditMessage";
+import { closeModal } from "../../store/modal";
 import { useSelector } from "react-redux";
 
 function Modal() {

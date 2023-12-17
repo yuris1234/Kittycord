@@ -4,153 +4,58 @@
     height: 100vh;
     flex-direction: column;
     background-color: #313338;
-    background-color: #2b2d31;
-    // background-color: #1a1b1e;
-    // background-color: #ffffff;
     color: #f2f3f5;
-    // color: #b5bac1;
-    // border: solid red;
 }
 
 .profile {
     display: flex;
     position: absolute;
     bottom: 5px;
+    padding-bottom: 5px;
+    padding-top: 100px;
     width: 200px;
-    margin-left: 5%;
-    // border: solid red;
+    margin-left: 100px;
     z-index: 10;
     align-items: center;
     justify-content: space-between;
+    background-color: #2b2d31;
 }
 
-.dms-container {
-    display: flex;
-    margin-left: 5%;
-    // border: solid red;
-    overflow: scroll;
-    height: 100%;
-    // background-color: rgba(255,255,255, 0.2);
-    // background-color: #2b2d31;
-    background-color: #313338;
-    color: #b5bac1;
-}
 
 .dms-wrapper {
     display: flex;
     flex-direction: column;
-    // border: solid blue;
     width: 250px;
     height: 100%;
     background-color: #2b2d31;
+    height: 100%;
 }
 
 .dms-list {
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
 }
 
 .navbar {
     display: flex;
-    // border: solid red;
     justify-content: space-between;
-    width: 30%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    width: 500px;    
+    margin-left: 350px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
     color: #b5bac1;
+    height: 20px;
 }
 
 .nav-button {
     cursor: pointer;
 }
 
-.dm {
-    display: flex;
-    cursor: pointer;
-    // border: solid red;
-    border-radius: 10px;
-    height: 50px;
-    width: 250px;
-    text-align: center;
-    align-items: center;
-    color: #b5bac1;
-
-}
-
-li:hover { 
+.navbar li:hover { 
     background-color: rgba(255,255,255, 0.1)
 }
 
-.dm-show {
-    position: absolute;
-    margin-left: 300px;
-    bottom: 75px;
-    // border: solid red;      
-}
-
-.send-message {
-    position: absolute;
-    // border: solid red;
-    width: 1000px;
-}
-
-.message {
-    color: #dbdee1;
-    margin-top: 5p  x;
-    margin-bottom: 5px;
-    // text-align: center;
-    // border: solid red;
-
-}
-
-.message-details {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    // border: solid red;
-}
-
-.message-profile {
-    display: flex;
-    // justify-content: space-between;
-    // border: solid red;
-}
-
-.message-profile > li {
-    margin-right: 10px;
-}
-
-.edit-button {
-    position: absolute;
-    right: 0;
-    margin-bottom: 10px;
-    // border: solid red;
-}
-
-.message-show {
-    margin-left: 15px;
-    margin-bottom: 25px;
-    width: 1000px;
-}
-
-.message-pfp {
-    display: flex;
-    // border: solid red;
-}
-
-.pfp {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: solid red;
-}
-
-.date {
-    color: #b5bac1;
-    font-size: 12px;
+.profile > img {
+    margin-left: 5px;
 }

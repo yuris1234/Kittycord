@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_131008) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_06_190423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,13 +25,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_131008) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "friends", force: :cascade do |t|
+  create_table "friend_requests", force: :cascade do |t|
     t.bigint "friender", null: false
     t.bigint "friended", null: false
-    t.string "status", null: false
+    t.string "status", default: "pending", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["friender", "friended"], name: "index_friends_on_friender_and_friended", unique: true
+    t.index ["friended"], name: "index_friend_requests_on_friended"
+    t.index ["friender", "friended"], name: "index_friend_requests_on_friender_and_friended", unique: true
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.bigint "friend_1", null: false
+    t.bigint "friend_2", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_1", "friend_2"], name: "index_friends_on_friend_1_and_friend_2", unique: true
+    t.index ["friend_2"], name: "index_friends_on_friend_2"
   end
 
   create_table "membership_joins", force: :cascade do |t|
@@ -74,8 +84,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_131008) do
   end
 
   add_foreign_key "channels", "servers"
-  add_foreign_key "friends", "users", column: "friended"
-  add_foreign_key "friends", "users", column: "friender"
+  add_foreign_key "friend_requests", "users", column: "friended"
+  add_foreign_key "friend_requests", "users", column: "friender"
+  add_foreign_key "friends", "users", column: "friend_1"
+  add_foreign_key "friends", "users", column: "friend_2"
   add_foreign_key "membership_joins", "users"
   add_foreign_key "messages", "users", column: "author_id"
   add_foreign_key "servers", "users", column: "owner_id"

@@ -17,6 +17,12 @@ export const receiveDms = (dms) => ({
     payload: dms
 })
 
+export const getDm = (dmId) => (state) => {
+    if (state.dms) {
+        return state.dms[dmId]
+    }
+}
+
 export const fetchDm = (dmId) => async (dispatch) => {
     const res = await csrfFetch(`/api/dms/${dmId}`);
     const data = await res.json();
@@ -33,15 +39,16 @@ const dmsReducer = (state = {}, action) => {
     const nextState = {...Object.freeze(state)}
     switch (action.type) {
         case RECEIVE_DM:
-            nextState[action.payload.dm.id] = action.payload.dm
-            return nextState;
+            return {...nextState, ...action.payload.dm}
+            // nextState[action.payload.dm.id] = action.payload.dm
+            // return nextState;
         case RECEIVE_DMS:
             return {...nextState, ...action.payload.dms}
         // case RECEIVE_MESSAGE:
         //     debugger
         //     return nextState;
         case RECEIVE_USER:
-            return {...nextState, ...action.user.dms}
+            return {...nextState, ...action.payload.dms}
         default:
             return state;
     }

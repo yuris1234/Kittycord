@@ -18,13 +18,19 @@ class User < ApplicationRecord
   has_many :membership_joins
   has_many :dms, through: :membership_joins, source_type: "Dm", source: :membership
   has_many :messages, foreign_key: :author_id, inverse_of: :author
-  has_many :friends, foreign_key: :friended
-  has_many :requested_friends
-  has_many :pending_friends
+
+
+  has_many :friendships1, foreign_key: :friend_1, class_name: :Friend
+  has_many :friendships2, foreign_key: :friend_2, class_name: :Friend
+  
+  has_many :friends1, through: :friendships1, source: :user_2
+  has_many :friends2, through: :friendships2, source: :user_1
+
+  has_many :sent_friend_requests, foreign_key: :friender, class_name: :FriendRequest
+  has_many :received_friend_requests, foreign_key: :friended, class_name: :FriendRequest
 
   def self.find_by_credentials(credential, password) 
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
-    # debugger
     user = User.find_by(field => credential)
     if user&.authenticate(password)
       return user
