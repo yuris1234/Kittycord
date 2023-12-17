@@ -10,18 +10,17 @@ class Api::MessagesController < ApplicationController
         @message = Message.new(message_params)
         if @message.save
             DmsChannel.broadcast_to @message.messageable, JSON.parse(render :show)
-                # from_template('api/messages/show',  {message: @message})
-            # debugger
-            # JSON.parse(render :show)
-            # render json: nil, status: :ok
         else
             render json: {errors: ['Unable to save message']}
         end
     end
 
     def destroy
-        message = Message.find_by(id: params[:id])
-        message.destroy
+        @message = Message.find_by(id: params[:id])
+        @message.destroy
+        DmsChannel.broadcast_to @message.messageable,
+            type: 'DESTROY_MESSAGE',
+            id: @message.id
         render json: nil, status: :ok
     end
 

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import consumer from '../../consumer';
-import { createMessage } from "../../store/message";
+import { createMessage, removeMessage } from "../../store/message";
 import { fetchDm } from "../../store/dm";
 import { receiveMessage } from "../../store/message";
 import { getMessages } from "../../store/message";
@@ -32,10 +32,16 @@ export default function Dm({dmId}) {
         const subscription = consumer.subscriptions.create(
           { channel: 'DmsChannel', id: dmId },
           {
-            received: ({message, user})  => {
-                dispatch(receiveMessage(message))
-                dispatch(receiveUser(user))
-                console.log('Received message ', message)
+            received: ({type, message, id})  => {
+                switch (type) {
+                    case 'DESTROY_MESSAGE':
+                        dispatch(removeMessage(id));
+                        break
+                    default:
+                        console.log('Received message ', message)
+                        dispatch(receiveMessage({message: message}))
+                        break
+                }
             }
           }
         );
