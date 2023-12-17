@@ -38,6 +38,10 @@ const usersReducer = (state = {}, action) => {
     const nextState = {...Object.freeze(state)}
     switch (action.type) {
         case RECEIVE_USER:
+            // console.log(action.payload)
+            // if (action.payload.user) {
+            //     nextState[action.payload.user.id] = {...nextState[action.payload.user.id], ...action.payload.user}
+            // }
             return {...nextState, ...action.payload.users}
         case RECEIVE_DM:
             return {...nextState, ...action.payload.users}

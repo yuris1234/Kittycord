@@ -13,24 +13,24 @@ end
 
 json.users do
   json.set! @user.id do 
-    json.extract! @user, :id, :email, :username
+    json.extract! @user, :id, :email, :username, :status, :pfp_url
     json.friendIds friendsArray
     json.dmIds dmsArray
   end
   @user.friends1.each do |friend|
     json.set! friend.id do 
-      json.extract! friend, :id, :email, :username
+      json.extract! friend, :id, :email, :username, :status, :pfp_url
     end 
   end
   @user.friends2.each do |friend|
     json.set! friend.id do
-      json.extract! friend, :id, :email, :username
+      json.extract! friend, :id, :email, :username, :status, :pfp_url
     end
   end
   @user.dms.each do |dm|
     dm.members.each do |member|
       json.set! member.id do
-        json.extract! member, :id, :email, :username
+        json.extract! member, :id, :email, :username, :status, :pfp_url
       end
     end
   end
