@@ -9,7 +9,7 @@ import { receiveMessage } from "../../store/message";
 import { getMessages } from "../../store/message";
 import Message from "../Message/Message";
 import { getDm } from "../../store/dm";
-import { getUsers } from "../../store/user";
+import { getUsers, receiveUser } from "../../store/user";
 import UntimedMessage from "../UntimedMessage/UntimedMessage";
 
 export default function Dm({dmId}) {
@@ -34,6 +34,7 @@ export default function Dm({dmId}) {
           {
             received: ({message, user})  => {
                 dispatch(receiveMessage(message))
+                dispatch(receiveUser(user))
                 console.log('Received message ', message)
             }
           }

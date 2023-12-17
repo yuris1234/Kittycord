@@ -38,7 +38,8 @@ const usersReducer = (state = {}, action) => {
     const nextState = {...Object.freeze(state)}
     switch (action.type) {
         case RECEIVE_USER:
-            return {...nextState, ...action.payload.users}
+            // nextState[action.payload.user] = 
+            return {...nextState, ...action.payload.user}
         case RECEIVE_DM:
             return {...nextState, ...action.payload.users}
         default:
