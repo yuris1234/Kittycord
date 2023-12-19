@@ -15,7 +15,6 @@ json.users do
   json.set! @user.id do 
     json.extract! @user, :id, :email, :username, :status, :pfp_url
     json.friendIds friendsArray
-    json.dmIds dmsArray
   end
   @user.friends1.each do |friend|
     json.set! friend.id do 

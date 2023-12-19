@@ -1,14 +1,12 @@
 .dm-container {
     max-height: 580px;
     margin-top: 120px;
-    // margin-bottom: 5px;
     height: 580px;
-    overflow: scroll;
-    margin-left: 0;
-    position: absolute;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
     display: flex;
-    // border: solid red;
-    // margin-top: aut  
+    width: 100%;
 }
 
 .send-container {
@@ -46,5 +44,6 @@
 .message-list {
     position: relative;
     margin-top: auto;   
+    // padding: 100px;
     
 }

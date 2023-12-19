@@ -24,9 +24,9 @@ export default function Dm({dmId}) {
         return member.id !== currentUser.id
     })[0]
 
-    useEffect(() => {
-        dispatch(fetchDm(dmId))
-    }, [dmId])
+    // useEffect(() => {
+    //     dispatch(fetchDm(dmId))
+    // }, [dmId])
 
     useEffect(() => {
         const subscription = consumer.subscriptions.create(

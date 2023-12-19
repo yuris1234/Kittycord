@@ -68,18 +68,18 @@ export default function UntimedMessage({message}) {
                                 } else if (e.code === 'Escape' && !e.shiftKey) {
                                     handleEscape(e);
                                 }}}></textarea> : 
-                                <p>{message.body}</p>
+                                <p className="message-body">{message.body}</p>
                             }
                     </ul>
+                </div>
                         {editable && (
-                            <ul className="message-profile spacing">
+                            <ul className="message-profile absolute">
                                 <div className="edit-button hide">
                                     <button onClick={handleModal}>Edit</button>
                                     <button onClick={handleDelete}>Delete</button>
                                 </div>
                             </ul>
                         )}
-                </div>
             </div>
         </>
     )

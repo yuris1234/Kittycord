@@ -13,6 +13,15 @@ class Api::DmsController < ApplicationController
         end
     end
 
+    def create
+        @dm = Dm.new()
+        if @dm.save
+            render :create
+        else
+            render json: @dm.errors.full_messages
+        end
+    end
+
     def index
 
     end

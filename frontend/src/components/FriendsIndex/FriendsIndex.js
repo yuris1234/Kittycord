@@ -1,8 +1,20 @@
-function FriendsIndex({user}) {
-    // const friends = user.friends 
+import { useSelector } from "react-redux";
+import { getFriends } from "../../store/user";
+import FriendsOnline from "../FriendsOnline";
+import { useState } from "react";
+
+function FriendsIndex({setCurrentDm}) {
+    const [view, setView] = useState('online')
+    const modal = useSelector(state => state.modals)
+
+    const changeView = (state) => (e) => {
+        setView(state);
+    }
 
     return (
-        <h1>hello from Friends Index</h1>
+        <>
+         {view === 'online' && <FriendsOnline setCurrentDm={setCurrentDm}/>}
+        </>
     )
 
 }
