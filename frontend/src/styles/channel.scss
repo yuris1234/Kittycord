@@ -2,12 +2,9 @@
     display: flex;
     min-width: 100vh;
     min-height: 100vh;
-    // height: 100%;
     flex-direction: column;
     background-color: #313338;
     color: #f2f3f5;
-    // overflow-x: hidden;
-    overflow: hidden;
 }
 
 .profile {
@@ -35,26 +32,37 @@
 
 .dms-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;    
+    text-align: center;
+    // margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    color: #b5bac1;
+    color: white;
+    height: 20px;
+    z-index: 10;
+    border-bottom: 1px solid;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     width: 500px;    
-    margin-left: 350px;
     text-align: center;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    color: #b5bac1;
     color: white;
-    height: 20px;
     z-index: 10;
+    margin-right: 300px;
 }
 
 .nav-button {
     cursor: pointer;
-    border: solid red;
+    // border: solid red;
     padding: 5px;
     display: flex;
     justify-content: center;

@@ -63,15 +63,18 @@
     height: 100%;   
 }
 
-.message-icon {
+.message-icon, .cancel-icon, .accept-icon {
     height: 20px;
     width: 20px;
     color: #dbdee1;
-    // border-radius: 20%;
 }
 
 .message-icon:hover {
     color: #ffffff;
+}
+
+.accept-icon:hover {
+    color: #22a559;
 }
 
 .action-button {
@@ -86,4 +89,21 @@
 
 .action-button:hover {
     cursor: pointer;
+}
+
+.action-button.cancel:hover {
+    cursor: pointer;
+    color: #f23f42;
+}
+
+.action-button.accept:hover {
+    cursor: pointer;
+    color: #22a559;
+}
+
+// accept and reject buttons
+.action-buttons {
+    display: flex;
+    width: 9%;
+    justify-content: space-between;
 }

@@ -1,4 +1,4 @@
-class Api::FriendsRequestsController < ApplicationController
+class Api::FriendRequestsController < ApplicationController
     def index
         @friend_requests = FriendRequest.all
         render :index
@@ -24,7 +24,7 @@ class Api::FriendsRequestsController < ApplicationController
         if @friend_request.update(friend_params)
             render :show
         else 
-            render json: {@friend_request.errors.full_messages}, status: 422
+            render json: {errors: @friend_request.errors.full_messages}
         end
     end
 
@@ -36,7 +36,7 @@ class Api::FriendsRequestsController < ApplicationController
         if @friend_request.save
             render :show
         else
-            render json: { @friend.errors.full_messages }, status: 422
+            render json: {errors: @friend.errors.full_messages }
         end
     end
 
@@ -46,7 +46,7 @@ class Api::FriendsRequestsController < ApplicationController
         if friend_request.destroy
             render json: {message: 'Friend request successfully deleted'}
         else
-            render json: { friend_request.errors.full_messages }, status: 422
+            render json: {errors: friend_request.errors.full_messages }
         end
     end
 

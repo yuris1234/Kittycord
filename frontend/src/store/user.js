@@ -4,6 +4,13 @@ import { RECEIVE_DM } from "./dm";
 
 export const RECEIVE_USER = "users/RECEIVE_USER";
 export const RECEIVE_USERS = "users/RECEIVE_USERS";
+export const RECEIVE_FRIEND = "users/RECEIVE_FRIEND";
+
+export const receiveFriend = (userId, friendId) => ({
+    type: RECEIVE_FRIEND,
+    friendId,
+    userId
+})
 
 export const getUsers = (userIds) => (state) => {
     const holder = []
@@ -45,7 +52,13 @@ export const fetchUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
     const data = await res.json();
     dispatch(receiveUser(data));
-    // dispatch(receiveDms(data));
+}
+
+export const createFriend = (userId, friendId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/friends`, {method: "POST", body: JSON.stringify({friend_1: userId, friend_2: friendId})});
+    if (res.ok) {
+        dispatch(receiveFriend(userId, friendId))
+    }
 }
 
 const usersReducer = (state = {}, action) => {
@@ -55,6 +68,11 @@ const usersReducer = (state = {}, action) => {
             return {...nextState, ...action.payload.users}
         case RECEIVE_DM:
             return {...nextState, ...action.payload.users}
+        case RECEIVE_FRIEND:
+            console.log(nextState[action.userId])
+            nextState[action.userId].friendIds.push(action.friendId);
+            console.log(nextState[action.userId])
+            return nextState;
         default:
             return state;
     }

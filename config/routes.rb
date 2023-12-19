@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resource :session, only: [:show, :create, :destroy]
     resources :dms, only: [:show, :create]
     resources :membership_joins, only: [:create]
+    resources :friend_requests, only: [:create, :destroy]
+    resources :friends, only: [:create]
     resources :messages, only: [:create, :show, :destroy, :update]
   end
   get '*path', to: "static_pages#frontend_index"

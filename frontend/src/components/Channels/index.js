@@ -5,10 +5,12 @@ import { fetchUser } from "../../store/user";
 import { logout } from "../../store/session";
 import DmsIndex from "../DmsIndex/DmsIndex";
 import NavBar from "../NavBar/NavBar";
+import { useState } from "react";
 
 export default function Channels() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
+    const [view, setView] = useState('online')
 
     // const channelUser = useSelector(state => state.user[currentUser.id])
 
@@ -34,8 +36,8 @@ export default function Channels() {
     return (
         <>
             <div className="channel-container">
-                <NavBar />
-                <DmsIndex user={currentUser}/>
+                <NavBar setView={setView}/> 
+                <DmsIndex view={view} setView={setView} user={currentUser}/>
                 <div className="profile">
                     <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
                     <p>{currentUser.username}</p>
