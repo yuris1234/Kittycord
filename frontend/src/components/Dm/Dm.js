@@ -11,6 +11,7 @@ import Message from "../Message/Message";
 import { getDm } from "../../store/dm";
 import { getUsers, receiveUser } from "../../store/user";
 import UntimedMessage from "../UntimedMessage/UntimedMessage";
+import { useRef } from "react";
 
 export default function Dm({dmId}) {
     const dispatch = useDispatch();
@@ -19,14 +20,11 @@ export default function Dm({dmId}) {
     const currentUser = useSelector(state => state.session.user);
     const messages = useSelector(getMessages(dmId));
     const members = useSelector(getUsers(dm?.members));
+    const ref = useRef(null);
 
     const filteredMember = members.filter((member) => {
         return member.id !== currentUser.id
     })[0]
-
-    useEffect(() => {
-        dispatch(fetchDm(dmId))
-    }, [dmId])
 
     useEffect(() => {
         const subscription = consumer.subscriptions.create(
@@ -55,11 +53,21 @@ export default function Dm({dmId}) {
         e.target.placeholder = `Message @${filteredMember.username}`
     }
 
+    const scrollBottom = (e) => {
+        if (ref.current) {
+            ref.current.scrollTop = ref.current.scrollHeight;
+        }
+    }
+
+    useEffect(() => {
+        scrollBottom();
+    })
+
     let author = null;
 
     return (
         <>
-            <ul className="dm-container">
+            <ul className="dm-container" ref={ref}>
                 <li className="message-list">
                     <li>{messages.map((message, i) => {
                         if (author !== message.authorId) {

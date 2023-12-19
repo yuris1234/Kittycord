@@ -11,8 +11,7 @@ import DmsIndexItem from "../DmsIndexItem/DmsIndexItem";
 import FriendsIndex from "../FriendsIndex/FriendsIndex";
 
 
-export default function DmsIndex({user}) {
-    const dispatch = useDispatch();
+export default function DmsIndex({view}) {
     const dms = useSelector(state => state.dms)
     const modal = useSelector(state => state.modals);
     const [currentDm, setCurrentDm] = useState(null);
@@ -34,8 +33,8 @@ export default function DmsIndex({user}) {
                     </div>
                 )}
                 {!modal.modal && (
-                    <div>
-                        <FriendsIndex user={user}/>
+                    <div className="friends-wrapper">
+                        <FriendsIndex view={view} setCurrentDm={setCurrentDm}/>
                     </div>
                 )}
             </div>

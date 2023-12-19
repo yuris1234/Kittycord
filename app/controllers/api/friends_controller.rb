@@ -20,7 +20,7 @@ class Api::FriendsController < ApplicationController
         if @friend.save
             render :show
         else
-            render json: { @friend.errors.full_messages }, status: 422
+            render json: {errors: @friend.errors.full_messages }
         end
     end
 
@@ -31,12 +31,12 @@ class Api::FriendsController < ApplicationController
             friend.destroy
             render json: {message: 'Friend successfully deleted'}
         else
-            render json: { friend.errors.full_messages }, status: 422
+            render json: {errors: friend.errors.full_messages }
         end
     end
 
     private
     def friend_params
-        params.require(:friend).permit(:friender, :friended, :status)
+        params.require(:friend).permit(:friend_1, :friend_2)
     end
 end

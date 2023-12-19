@@ -1,6 +1,6 @@
 .date-message {
     margin-left: 10px;
-    position: relative;
+    // position: relative;
     font-size: 12px;
     color: #b5bac1;
 }
@@ -52,15 +52,17 @@
 
 .message-username {
     padding-top: 5px;
-    padding-bottom: 7px;
+    padding-bottom: 5px;
 }
 
 .message-profile > li {
     margin-right: 10px;
+    border: solid red;
 }
 
 .message-show {
-    width: 1050px;
+    width: 1000px;
+    flex-wrap: wrap;
 }
 
 .message-show.untimed {
@@ -73,6 +75,7 @@
 
 .message-pfp.new {
     margin-top: 10px;
+    width: 94%;
 }
 
 .pfp {
@@ -80,11 +83,12 @@
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
-    border: solid red;
+    // border: solid red;
     margin-left: 20px;
+    margin-top: 5px;
 }
 
-.message:hover .hide{
+.message-pfp:hover .hide{
     visibility: visible
 }
 
@@ -94,13 +98,13 @@
 }
 
 .message {
-    height: 30px;
-    width: 100%;
+    min-height: 30px;
+    width: 90%;
+    max-width: 100%;
     display: flex;
-}
-
-.message-body.untimed {
-    width: 1000px;
+    // border: solid red;
+    // flex-wrap: nowrap;
+    line-height: 125%;
 }
 
 .space {
@@ -108,4 +112,17 @@
     position: absolute;
     right: 0;
     visibility: hidden
+}
+
+.message-body {
+    position: relative;
+    word-wrap: break-word;
+    width: 90%;
+}
+
+.message-profile.absolute {
+    position: relative;
+    left: 0;
+    top: 0;
+
 }
