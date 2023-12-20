@@ -71,7 +71,7 @@ const Message = ({ message }) => {
                                 <li className="date-message">{formatter(message.createdAt)}</li>
                             </div>
                         </ul>
-                        <div>
+                        <div className="message-length">
                             {modal.modal==='edit' && modal.id===message.id ? <textarea onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
                                 if (e.code === 'Enter' && !e.shiftKey) {
                                     handleSubmit(e);
@@ -83,12 +83,12 @@ const Message = ({ message }) => {
                         </div>
                     </ul>
                 </div>
-                            {editable && (
-                            <div className="edit-button hide">
-                                <button onClick={handleModal}>Edit</button>
-                                <button onClick={handleDelete}>Delete</button>
-                            </div>
-                            )}
+                    {editable && (
+                    <div className="edit-button hide">
+                        <button onClick={handleModal}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button>
+                    </div>
+                    )}
             </div>
         </>
     )

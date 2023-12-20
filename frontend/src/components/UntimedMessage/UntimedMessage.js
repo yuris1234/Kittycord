@@ -72,14 +72,14 @@ export default function UntimedMessage({message}) {
                             }
                     </ul>
                 </div>
-                        {editable && (
-                            <ul className="message-profile absolute">
-                                <div className="edit-button hide">
-                                    <button onClick={handleModal}>Edit</button>
-                                    <button onClick={handleDelete}>Delete</button>
-                                </div>
-                            </ul>
-                        )}
+                {editable && (
+                    <ul className="message-profile absolute">
+                        <div className="edit-button hide">
+                            <button onClick={handleModal}>Edit</button>
+                            <button onClick={handleDelete}>Delete</button>
+                        </div>
+                    </ul>
+                )}
             </div>
         </>
     )
