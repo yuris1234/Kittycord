@@ -14,13 +14,6 @@ export default function Channels() {
     const [view, setView] = useState('online')
     const [currentDm, setCurrentDm] = useState(null);
     const dms = useSelector(state => state.dms)
-
-    // const channelUser = useSelector(state => state.user[currentUser.id])
-
-    // const friends = useSelector(state => Object.values(state.friends).select((friend) => {
-    //     channelUser.friends.includes(friend.id)
-    // }))
-    // debugger
     
     useEffect(() => {
         if (currentUser) {
@@ -39,15 +32,24 @@ export default function Channels() {
     return (
         <>
             <div className="channel-container">
-                <h1 className="server-container">Servers</h1>
+                <div className="server-container"> 
+                    <div className="server-icon-wrapper">
+                        <img className="server-icon" src="	https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
+                    </div>
+                </div>
                 <div className="dms-wrapper">
                     <div>
-                        <h1>Direct Messages</h1>
-                        <ul className="dms-list">
-                            {Object.values(dms).map((dm) => {
-                                return <DmsIndexItem setCurrentDm={setCurrentDm} dmId={dm.id}/>
-                            })}
-                        </ul>
+                        <div className="search-bar">
+                            <button type="button" className="search-button" >Find or start a conversation</button>
+                        </div>
+                        <div>
+                            <h1 className="direct-messages">Direct Messages</h1>
+                            <ul className="dms-list">
+                                {Object.values(dms).map((dm) => {
+                                    return <DmsIndexItem setCurrentDm={setCurrentDm} dmId={dm.id}/>
+                                })}
+                            </ul>
+                        </div>
                     </div>
                     <div className="profile">
                         <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
