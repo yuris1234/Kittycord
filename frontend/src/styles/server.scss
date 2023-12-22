@@ -1,12 +1,11 @@
 .server-container {
-    min-width: 72px;
-    max-width: 72px;
     background-color: #1e1f22;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 8px;
+    min-width: 72px;
 }
 
 .server-icon {
@@ -23,13 +22,59 @@
     justify-content: center;
     background-color: #313338;
     border-radius: 100%;
+    // transition: border-radius .3s;
     height: 48px;
     width: 48px;
 
 }
 
 .server-icon-wrapper:hover {
-    transition: border-radius .3s;
+    border-radius: 16px;
+    transition: border-radius .3s, transition-delay 1s;
+    background-color: #5865f2;
     transition: background-color .15s ease-out,color .15s ease-out;
     cursor: pointer;
+}
+
+.active-link {
+    background-color: #5865f2;
+    border-radius: 16px;
+}
+
+.server-tab {
+    display: flex;
+    align-items: center;
+    left: 0;
+    min-height: 48px;
+    min-width: 8px;
+    position: absolute;
+}
+
+.server-tab-icon {
+    z-index: 10;
+    background: #f2f3f5;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    min-height: 24px;
+    min-width: 8px;
+    margin-left: -4px;
+}
+
+.server-icon-wrapper:hover .server-tab-icon {
+    min-height: 40px;
+    min-width: 8px;
+    transition: min-height .2s ease-in-out, min-width .2s ease-in;
+}
+
+.server-divider {
+    background-color: #35363c;
+    border-radius: 1px;
+    margin-bottom: 8px;
+    min-height: 2px;
+    width: 32px;
+}
+
+.active-link .server-tab-icon {
+    min-height: 40px;
+    min-width: 8px;
 }

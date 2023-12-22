@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Link, Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, NavLink, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../../store/user";
 import { logout } from "../../store/session";
@@ -29,14 +29,28 @@ export default function Channels() {
         dispatch(logout());
     }
 
+    const handleNavigate = (e) => {
+
+    }
+
     return (
         <>
-            <div className="channel-container">
-                <div className="server-container"> 
-                    <div className="server-icon-wrapper">
-                        <img className="server-icon" src="	https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
-                    </div>
-                </div>
+            {/* <div className="channel-container"> */}
+                {/* <div className="server-container"> 
+                    <NavLink className="server-icon-wrapper" to="/channels" activeClassName="active-link">
+                        <div className="server-tab">
+                            <span className="server-tab-icon"></span>
+                        </div>
+                        <img className="server-icon" src="https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
+                    </NavLink>
+                    <NavLink className="server-icon-wrapper" to="/servers/1" activeClassName="active-link">
+                        <div className="server-tab">
+                            <span className="server-tab-icon"></span>
+                        </div>
+                        <img className="server-icon" src="https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
+                    </NavLink>
+                    <div className="server-divider"></div>
+                </div> */}
                 <div className="dms-wrapper">
                     <div>
                         <div className="search-bar">
@@ -61,7 +75,7 @@ export default function Channels() {
                     <NavBar setView={setView}/> 
                     <DmsIndex currentDm={currentDm} view={view} setView={setView} user={currentUser}/>
                 </div>
-            </div>
+            {/* </div> */}
         </>
     )
 }
