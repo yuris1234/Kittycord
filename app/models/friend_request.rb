@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: friend_requests
+#
+#  id         :bigint           not null, primary key
+#  friender   :bigint           not null
+#  friended   :bigint           not null
+#  status     :string           default("pending"), not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class FriendRequest < ApplicationRecord
     before_validation :validate_request
     validates :friender, :friended, presence: true

@@ -1,6 +1,7 @@
 import csrfFetch from "./csrf";
 import { receiveDm } from "./dm";
 import { RECEIVE_DM } from "./dm";
+import { RECEIVE_CHANNEL } from "./channel";
 
 export const RECEIVE_MESSAGE = "messages/RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "messages/RECEIVE_MESSAGES";
@@ -51,11 +52,12 @@ const messagesReducer = (state = {}, action) => {
             nextState[action.payload.message.id] = action.payload.message
             return nextState;
         case RECEIVE_DM:
-            // debugger
             return {...nextState, ...action.payload.messages}
         case REMOVE_MESSAGE:
             delete nextState[action.messageId];
             return nextState;
+        case RECEIVE_CHANNEL:
+            return {...nextState, ...action.payload.messages}
         default:
             return state;
     }

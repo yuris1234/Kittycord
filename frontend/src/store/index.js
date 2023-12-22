@@ -6,6 +6,8 @@ import dmsReducer from './dm';
 import messagesReducer from './message';
 import modalsReducer from './modal';
 import friendRequestsReducer from './friendRequest';
+import serversReducer from './server';
+import channelsReducer from './channel';
 
 
 const rootReducer = combineReducers({
@@ -14,7 +16,9 @@ const rootReducer = combineReducers({
     dms: dmsReducer,
     messages: messagesReducer,
     modals: modalsReducer,
-    friendRequests: friendRequestsReducer
+    friendRequests: friendRequestsReducer,
+    servers: serversReducer,
+    channels: channelsReducer
 })
 
 let enhancer;

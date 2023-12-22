@@ -35,22 +35,6 @@ export default function Channels() {
 
     return (
         <>
-            {/* <div className="channel-container"> */}
-                {/* <div className="server-container"> 
-                    <NavLink className="server-icon-wrapper" to="/channels" activeClassName="active-link">
-                        <div className="server-tab">
-                            <span className="server-tab-icon"></span>
-                        </div>
-                        <img className="server-icon" src="https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
-                    </NavLink>
-                    <NavLink className="server-icon-wrapper" to="/servers/1" activeClassName="active-link">
-                        <div className="server-tab">
-                            <span className="server-tab-icon"></span>
-                        </div>
-                        <img className="server-icon" src="https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
-                    </NavLink>
-                    <div className="server-divider"></div>
-                </div> */}
                 <div className="dms-wrapper">
                     <div>
                         <div className="search-bar">
