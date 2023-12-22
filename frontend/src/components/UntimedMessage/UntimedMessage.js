@@ -14,15 +14,10 @@ export default function UntimedMessage({first, message}) {
     const [body, setBody] = useState(message.body)
     const currentUser = useSelector(state => state.session.user)
     const [editable, setEditable] = useState(false);
-    const ref = useRef();
 
     useEffect(() => {
-        if (author.id === currentUser.id) {
+        if (author?.id === currentUser?.id) {
             setEditable(true);
-        }
-        if (first === "0") {
-            console.log(first)
-            ref.className = "message-pfp first"
         }
 
     }, [currentUser, author])
@@ -57,7 +52,7 @@ export default function UntimedMessage({first, message}) {
 
     return (
         <>
-            <div ref={ref} className="message-pfp">
+            <div className="message-pfp">
                 <div className="message">
                     <ul className="message-show untimed">
                         <li className="date-message hide">{formatter(message.createdAt)}</li>

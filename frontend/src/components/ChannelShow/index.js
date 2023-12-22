@@ -12,6 +12,7 @@ import { getDm } from "../../store/dm";
 import { getUsers, receiveUser } from "../../store/user";
 import UntimedMessage from "../UntimedMessage/UntimedMessage";
 import { useRef } from "react";
+import FirstMessage from "../FirstMessage";
 
 export default function ChannelShow({channel}) {
     const dispatch = useDispatch();
@@ -64,12 +65,17 @@ export default function ChannelShow({channel}) {
         <div className="dms-container">
             <div className="dm-show">
                 <ul className="dm-container" ref={ref}>
+                    <div className="first"></div>
                     {messages.map((message, i) => {
                         if (author !== message.authorId) {
                             author = message.authorId
-                            return <Message key={message.id} message={message}/>
+                            if (i === 0) {
+                                return <FirstMessage key={message.id} message={message}/>
+                            } else {
+                                return <Message first={i} key={message.id} message={message}/>
+                            }
                         } else {
-                            return <UntimedMessage key={message.id} message={message}/>
+                            return <UntimedMessage first={i} key={message.id} message={message}/>
                         }
                     })}
                 </ul>
