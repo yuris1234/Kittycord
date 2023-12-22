@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { deleteMessage } from "../../store/message";
 import { openModal } from "../../store/modal";
 import { useSelector } from "react-redux";
+import { useRef } from "react";
 import { updateMessage } from "../../store/message";    
 
-export default function UntimedMessage({message}) {
+export default function UntimedMessage({first, message}) {
     const dispatch = useDispatch();
     // const [hovered, setHovered] = useState(false);
     const modal = useSelector(state => state.modals);
@@ -13,19 +14,17 @@ export default function UntimedMessage({message}) {
     const [body, setBody] = useState(message.body)
     const currentUser = useSelector(state => state.session.user)
     const [editable, setEditable] = useState(false);
-
-    // const handleHover = (e) => {
-    //     setHovered(true)
-    // }
-
-    // const handleNoHover = (e) => {
-    //     setHovered(false)
-    // }
+    const ref = useRef();
 
     useEffect(() => {
         if (author.id === currentUser.id) {
             setEditable(true);
         }
+        if (first === "0") {
+            console.log(first)
+            ref.className = "message-pfp first"
+        }
+
     }, [currentUser, author])
 
     const handleDelete = (e) => {
@@ -58,7 +57,7 @@ export default function UntimedMessage({message}) {
 
     return (
         <>
-            <div className="message-pfp">
+            <div ref={ref} className="message-pfp">
                 <div className="message">
                     <ul className="message-show untimed">
                         <li className="date-message hide">{formatter(message.createdAt)}</li>

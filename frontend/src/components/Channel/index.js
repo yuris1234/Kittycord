@@ -8,18 +8,12 @@ import NavBar from "../NavBar/NavBar";
 import { useState } from "react";
 import DmsIndexItem from "../DmsIndexItem/DmsIndexItem";
 
-export default function Channels() {
+export default function Channel() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
     const [view, setView] = useState('online')
     const [currentDm, setCurrentDm] = useState(null);
     const dms = useSelector(state => state.dms)
-    
-    useEffect(() => {
-        if (currentUser) {
-            dispatch(fetchUser(currentUser.id))
-        }
-    }, [currentUser])
 
     if (!currentUser) {
         return <Redirect to="/login"/>

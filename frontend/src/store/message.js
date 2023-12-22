@@ -22,8 +22,12 @@ export const receiveMessages = (messages) => ({
     payload: messages
 })
 
-export const getMessages = dmId => state => {
-    return Object.values(state?.messages).filter(message => message.messageableId === parseInt(dmId))
+export const getDmMessages = dmId => state => {
+    return Object.values(state?.messages).filter(message => message.messageableId === parseInt(dmId) && message.messageableType === "Dm")
+}
+
+export const getChannelMessages = channelId => state => {
+    return Object.values(state?.messages).filter(message => message.messageableId === channelId && message.messageableType === "Channel")
 }
     
 export const updateMessage = message => async (dispatch) => {

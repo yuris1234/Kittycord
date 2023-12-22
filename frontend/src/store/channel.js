@@ -8,6 +8,17 @@ export const receiveChannel = (channel) => ({
     payload: channel
 })
 
+export const getChannels = (channelArray) => (state) => {
+    const holder = Object.values(state.channels).filter((channel) => channelArray?.includes(channel.id))
+    return holder
+}
+
+export const getChannel = (channelId) => (state) => {
+    if (channelId) {
+        return state.channels[channelId]
+    }
+}
+
 export const fetchChannel = (channelId) => async (dispatch) => {
     const res = await csrfFetch(`/api/channels/${channelId}`);
     if (res.ok) {

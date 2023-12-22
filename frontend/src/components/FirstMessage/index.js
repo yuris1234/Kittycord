@@ -9,7 +9,7 @@ import { useHover } from "@uidotdev/usehooks";
 import { useRef } from "react";
 
 
-const Message = ({ first, message }) => {
+export default function FirstMessage({message}) {
     const dispatch = useDispatch();
     // const [hovered, setHovered] = useState(false);
     const modal = useSelector(state => state.modals);
@@ -17,15 +17,10 @@ const Message = ({ first, message }) => {
     const [body, setBody] = useState(message.body)
     const currentUser = useSelector(state => state.session.user)
     const [editable, setEditable] = useState(false);
-    const ref = useRef();
 
     useEffect(() => {
         if (author?.id === currentUser?.id) {
             setEditable(true);
-        }
-        console.log(first)
-        if (first === 0) {
-            ref.className = "message-pfp new first"
         }
     }, [currentUser, author])
 
@@ -67,7 +62,7 @@ const Message = ({ first, message }) => {
 
     return (
         <>
-            <div ref={ref} className="message-pfp new" >
+            <div className="message-pfp new first" >
                 <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
                 <div className="message new">
                     <ul className="message-show timed">
@@ -99,5 +94,3 @@ const Message = ({ first, message }) => {
         </>
     )
 }
-
-export default Message;

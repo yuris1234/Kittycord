@@ -1,48 +1,42 @@
 .dm-container {
     max-height: 580px;
-    margin-top: 120px;
+
     height: 580px;
     overflow-y: scroll;
     overflow-x: hidden;
     position: relative;
     display: flex;
     width: 100%;
+    flex-direction: column;
     // margin-right: 100px;
+    margin-bottom: 10px;
 }
 
+
 .send-container {
-    position: absolute;
-    bottom: 0;
+    margin-left: 20px;
+    width: 100%;
+    
 }
 
 .send-message {
     position: absolute;
-    // border: solid red;
-    width: 1000px;
+    width: calc(100% - 360px);;
+    border-radius: 8px;
+    background-color: #3a3a40;
+    border: none;
+    resize: none;
+    height: 45px;
 }
 
 .dm-show {
+    margin-bottom: 0;
+    width: 100%;
     display: flex;
-    position: absolute;
-    // margin-left: 200px;
-    width: 80%;
-    bottom: 75px; 
-    height: 100%;   
+    flex-direction: column;
+    // justify-content: space-betwee;
 }
 
-// .dm {
-//     display: flex;
-//     border-radius: 10px;
-//     height: 50px;
-//     width: 250px;
-//     text-align: center;
-//     align-items: center;
-
-// }
-
-.message-list {
-    position: relative;
-    margin-top: auto;   
-    // padding: 100px;
-    
+.first {
+    margin-top: auto;
 }

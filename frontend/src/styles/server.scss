@@ -27,3 +27,54 @@
     text-overflow: ellipsis;
     font-weight: 500;
 }
+
+.dms-list.server {
+    flex-direction: column;
+    padding-top: 16px;
+}
+
+.channel-item {
+    align-items: center;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 4px;
+    max-height: 30px;
+    min-height: 30px;
+    width: 90%;
+    text-decoration: none;
+    color: #949bA1;
+}
+
+.active-channel {
+    background: #43444b !important;
+    color: white !important;
+}
+
+.active-channel .hashtag-icon {
+    color: white !important;
+}
+
+.channel-link {
+    margin-left: 5px;
+    text-overflow: ellipsis;
+    font-size: 16px;
+}
+
+.channel-item .hashtag-icon {
+    width: 20px;
+    height: 20px;
+    text-decoration: none;
+    color: #949bA1;
+}
+
+.channel-item:hover {
+    background: #4e50584c;
+    color: #dbdee1;
+    cursor: pointer;
+}
+
+.channel-item:hover .hashtag-icon {
+    color: #dbdee1
+}

@@ -5,12 +5,17 @@ class Api::ServersController < ApplicationController
         if @server.save
             render :show
         else
-            render json: {@server.errors.full_messages}
+            render json: {errors: @server.errors.full_messages}
         end
     end
 
     def show
-
+        @server = Server.find(params[:id])
+        if @server
+            render :show
+        else
+            render json: {errors: @server.errors.full_messages}
+        end
     end
 
     private

@@ -14,7 +14,9 @@
     z-index: 10;
     align-items: center;
     justify-content: space-between;
-    background-color: #2b2d31;
+    background-color: #232428;
+    max-height: 52px;
+    min-height: 52px;
 }
 
 
@@ -80,7 +82,7 @@
 .content-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: calc(100% - 312px);
 }
 
 .friend-icon {

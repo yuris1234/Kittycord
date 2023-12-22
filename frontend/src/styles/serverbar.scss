@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px;
+    // gap: 8px;
     min-width: 72px;
 }
 
@@ -65,8 +65,9 @@
 .server-divider {
     background-color: #35363c;
     border-radius: 1px;
-    margin-bottom: 8px;
+    // margin-bottom: 8px;
     min-height: 2px;
+    margin-top: 8px;
     width: 32px;
 }
 

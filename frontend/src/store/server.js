@@ -8,6 +8,19 @@ export const receiveServer = (server) => ({
     payload: server
 })
 
+export const getServer = (serverId) => (state) => {
+    if (serverId && state.servers[serverId]) {
+        return state.servers[serverId]
+    }
+}
+
+export const getServers = (serverIds) => (state) => {
+    if (serverIds) {
+        const holder = Object.values(state.servers).filter((server) => serverIds?.includes(server.id));
+        return holder;
+    }
+}
+
 export const fetchServer = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}`);
     if (res.ok) {

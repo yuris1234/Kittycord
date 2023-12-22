@@ -24,21 +24,15 @@ export const getDm = (dmId) => (state) => {
 }
 
 export const createDm = (user1, user2) => async (dispatch) => {
-    console.log('hello from create Dm')
     const res = await csrfFetch('/api/dms', {method: "POST", headers: {'Content-Type': 'application/json'}});
     if (res.ok) {
-        console.log('dm successfully created')
         const data = await res.json();
         const user1Res = await csrfFetch('/api/membership_joins', {method: "POST",  body: JSON.stringify({user_id: user1, membership_type: "Dm", membership_id: data.dm.id}), headers: {'Content-Type': 'application/json'}});
         const user1ResJSON = await user1Res.json();
-        console.log(user1ResJSON);
         if (user1Res.ok) {
-            console.log('membershipjoin1 successfully created')
             const user2Res = await csrfFetch('/api/membership_joins', {method: "POST",  body: JSON.stringify({user_id: user2, membership_type: "Dm", membership_id: data.dm.id}), headers: {'Content-Type': 'application/json'}});
             const user2ResJSON = await user2Res.json();
-            console.log(user2ResJSON);
             if (user2Res.ok) {
-                console.log('membershipjoin2 successfully created')
                 const dmRes = await csrfFetch(`/api/dms/${data.dm.id}`);
                 const dm = await dmRes.json();
                 dispatch(receiveDm(dm))

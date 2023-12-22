@@ -22,7 +22,7 @@
 .message-details {
     display: flex;
     align-items: center;
-    width: 100%;
+
     justify-content: flex-start;
 }
 
@@ -62,7 +62,7 @@
 
 .message-show {
     width: 100%;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 }
 
 // .message-show.untimed {
@@ -71,7 +71,9 @@
 
 .message-pfp {
     display: flex;
-    width: 92%;
+    // width: 92%;
+    bottom: auto;
+    position: relative;
 }
 
 .message-pfp.new {
@@ -108,12 +110,12 @@
     line-height: 125%;
 }
 
-.space {
-    width: 50px;
-    position: absolute;
-    right: 0;
-    visibility: hidden
-}
+// .space {
+//     width: 50px;
+//     position: absolute;
+//     right: 0;
+//     visibility: hidden
+// }
 
 .message-body {
     position: relative;
@@ -128,6 +130,7 @@
 
 }
 
-.message-length {
-    width: 800px;
+
+.edit-button.new {
+    margin-left: -59px !important;
 }
