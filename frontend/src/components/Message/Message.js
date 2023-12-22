@@ -6,9 +6,10 @@ import EditMessage from "../EditMessage/EditMessage";
 import { useSelector } from "react-redux";
 import { updateMessage } from "../../store/message";
 import { useHover } from "@uidotdev/usehooks";
+import { useRef } from "react";
 
 
-const Message = ({ message }) => {
+const Message = ({ first, message }) => {
     const dispatch = useDispatch();
     // const [hovered, setHovered] = useState(false);
     const modal = useSelector(state => state.modals);
@@ -16,10 +17,15 @@ const Message = ({ message }) => {
     const [body, setBody] = useState(message.body)
     const currentUser = useSelector(state => state.session.user)
     const [editable, setEditable] = useState(false);
+    const ref = useRef();
 
     useEffect(() => {
-        if (author.id === currentUser.id) {
+        if (author?.id === currentUser?.id) {
             setEditable(true);
+        }
+        console.log(first)
+        if (first === 0) {
+            ref.className = "message-pfp new first"
         }
     }, [currentUser, author])
 
@@ -61,7 +67,7 @@ const Message = ({ message }) => {
 
     return (
         <>
-            <div className="message-pfp new" >
+            <div ref={ref} className="message-pfp new" >
                 <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
                 <div className="message new">
                     <ul className="message-show timed">
@@ -71,7 +77,7 @@ const Message = ({ message }) => {
                                 <li className="date-message">{formatter(message.createdAt)}</li>
                             </div>
                         </ul>
-                        <div>
+                        <div className="message-length">
                             {modal.modal==='edit' && modal.id===message.id ? <textarea onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
                                 if (e.code === 'Enter' && !e.shiftKey) {
                                     handleSubmit(e);
@@ -83,12 +89,12 @@ const Message = ({ message }) => {
                         </div>
                     </ul>
                 </div>
-                            {editable && (
-                            <div className="edit-button hide">
-                                <button onClick={handleModal}>Edit</button>
-                                <button onClick={handleDelete}>Delete</button>
-                            </div>
-                            )}
+                    {editable && (
+                    <div className="edit-button new hide">
+                        <button onClick={handleModal}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button>
+                    </div>
+                    )}
             </div>
         </>
     )

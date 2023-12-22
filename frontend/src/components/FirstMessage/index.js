@@ -1,12 +1,15 @@
-import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { deleteMessage } from "../../store/message";
 import { openModal } from "../../store/modal";
+import EditMessage from "../EditMessage/EditMessage";
 import { useSelector } from "react-redux";
+import { updateMessage } from "../../store/message";
+import { useHover } from "@uidotdev/usehooks";
 import { useRef } from "react";
-import { updateMessage } from "../../store/message";    
 
-export default function UntimedMessage({first, message}) {
+
+export default function FirstMessage({message}) {
     const dispatch = useDispatch();
     // const [hovered, setHovered] = useState(false);
     const modal = useSelector(state => state.modals);
@@ -19,7 +22,6 @@ export default function UntimedMessage({first, message}) {
         if (author?.id === currentUser?.id) {
             setEditable(true);
         }
-
     }, [currentUser, author])
 
     const handleDelete = (e) => {
@@ -39,6 +41,12 @@ export default function UntimedMessage({first, message}) {
         dispatch(openModal('view'));
     }
 
+    // const formatter = new Intl.DateTimeFormat("en-GB", {
+    //     year: "numeric",
+    //     month: "long",
+    //     day: "2-digit"
+    // });
+
     function formatter(createdAt) {
         const date = new Date(createdAt);
         let hours = date.getHours();
@@ -49,14 +57,23 @@ export default function UntimedMessage({first, message}) {
         const formattedTime = `${hours}:${minutes} ${ampm}`;
         return formattedTime;
       }
+    
+
 
     return (
         <>
-            <div className="message-pfp">
-                <div className="message">
-                    <ul className="message-show untimed">
-                        <li className="date-message hide">{formatter(message.createdAt)}</li>
-                        {modal.modal==='edit' && modal.id===message.id ? <textarea onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
+            <div className="message-pfp new first" >
+                <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
+                <div className="message new">
+                    <ul className="message-show timed">
+                        <ul className="message-profile">
+                            <div className="message-details">
+                                <li className="message-username">{author?.username}</li>
+                                <li className="date-message">{formatter(message.createdAt)}</li>
+                            </div>
+                        </ul>
+                        <div className="message-length">
+                            {modal.modal==='edit' && modal.id===message.id ? <textarea onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
                                 if (e.code === 'Enter' && !e.shiftKey) {
                                     handleSubmit(e);
                                 } else if (e.code === 'Escape' && !e.shiftKey) {
@@ -64,18 +81,16 @@ export default function UntimedMessage({first, message}) {
                                 }}}></textarea> : 
                                 <p className="message-body">{message.body}</p>
                             }
-                    </ul>
-                </div>
-                {editable && (
-                    <ul className="message-profile absolute">
-                        <div className="edit-button hide">
-                            <button onClick={handleModal}>Edit</button>
-                            <button onClick={handleDelete}>Delete</button>
                         </div>
                     </ul>
-                )}
+                </div>
+                    {editable && (
+                    <div className="edit-button new hide">
+                        <button onClick={handleModal}>Edit</button>
+                        <button onClick={handleDelete}>Delete</button>
+                    </div>
+                    )}
             </div>
         </>
     )
-
 }

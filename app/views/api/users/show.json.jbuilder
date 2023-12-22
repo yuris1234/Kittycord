@@ -22,6 +22,11 @@ receivedFriendRequestsArray = []
   receivedFriendRequestsArray << friend_request.id
 end
 
+serversArray = []
+@user.servers.each do |server|
+  serversArray << server.id
+end
+
 
 json.users do
   json.set! @user.id do 
@@ -29,6 +34,7 @@ json.users do
     json.friendIds friendsArray
     json.sentFriendRequests sentFriendRequestsArray
     json.receivedFriendRequests receivedFriendRequestsArray
+    json.serverIds serversArray
   end
   @user.friends1.each do |friend|
     json.set! friend.id do 
@@ -80,6 +86,16 @@ json.friendRequests do
   @user.received_friend_requests.each do |request|
     json.set! request.id do
       json.extract! request, :id, :friender, :friended, :status
+    end
+  end
+end
+
+json.servers do 
+  @user.servers.each do |server|
+    channels = server.channels.map {|channel| channel.id}
+    json.set! server.id do
+      json.extract! server, :id, :owner_id, :name
+      json.channels channels
     end
   end
 end

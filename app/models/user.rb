@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  email           :string           not null
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  status          :string           default("offline"), not null
+#  pfp_url         :string           default("/unknown.png")
+#
 class User < ApplicationRecord
   has_secure_password
   validates :username, 
@@ -18,6 +32,9 @@ class User < ApplicationRecord
   has_many :membership_joins
   has_many :dms, through: :membership_joins, source_type: "Dm", source: :membership
   has_many :messages, foreign_key: :author_id, inverse_of: :author
+  has_many :owned_servers, class_name: :Server, foreign_key: :owner_id
+  has_many :channels, through: :membership_joins, source_type: "Channel", source: :membership
+  has_many :servers, through: :channels
 
 
   has_many :friendships1, foreign_key: :friend_1, class_name: :Friend

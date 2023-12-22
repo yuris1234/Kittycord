@@ -1,21 +1,84 @@
 .dms-container {
     display: flex;
-    margin-left: 100px;
+    // margin-left: 100px;
     overflow: scroll;
     background-color: #313338;
     height: 100vh;
     width: 100%;
 }
 
-.dms-list > li:hover {
+.dms-wrapper {
+    width: 240px;
+}
+
+.direct-messages {
+    padding: 0 8px 8px 18px;
+    height: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #949ba4 ;
+}
+
+.dm-pfp {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dm-index-item {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.username-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.dms-list {
+    gap: 8px;
+}
+
+.dm-index-item:hover {
     background-color: rgba(255,255,255, 0.1);
     cursor: pointer
 }
 
-.dms-list > li {
-    width: 100%;
+.search-bar {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    padding: 0 10px;
+    flex: 0 0 auto;
+    border-bottom: 2px solid #26282c;
 }
 
-.dms-wrapper {
-    width: 200px;
+.search-button {
+    width: 100%;
+    height: 28px;
+    border-radius: 4px;
+    text-align: left;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: none;
+    background-color: #1e1f22;
+    color: #949ba4;
+    outline: 0;
+    border: 0;
 }

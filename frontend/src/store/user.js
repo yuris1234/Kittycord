@@ -69,9 +69,7 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_DM:
             return {...nextState, ...action.payload.users}
         case RECEIVE_FRIEND:
-            console.log(nextState[action.userId])
             nextState[action.userId].friendIds.push(action.friendId);
-            console.log(nextState[action.userId])
             return nextState;
         default:
             return state;

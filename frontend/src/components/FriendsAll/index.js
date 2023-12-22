@@ -26,7 +26,6 @@ export default function FriendsAll({setCurrentDm}) {
         if (exists) {
             const newDm = await dispatch(createDm(user.id, friendId));
             await dispatch(openModal('view'))
-            console.log(newDm.dm.id);
             setCurrentDm(newDm.dm.id)
         }
     }
