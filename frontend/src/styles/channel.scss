@@ -13,10 +13,26 @@
     // margin-left: 100px;
     z-index: 10;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     background-color: #232428;
     max-height: 52px;
     min-height: 52px;
+}
+
+.username {
+    margin-left: 5px;
+}
+
+.logout-button {
+    // position: absolute;
+    background-color: #f23f42;
+    color: #f2f3f5;
+    border-radius: 5px;
+    border: none;
+    appearance: none;
+    margin-left: 40px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 

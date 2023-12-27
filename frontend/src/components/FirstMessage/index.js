@@ -22,6 +22,7 @@ export default function FirstMessage({message}) {
         if (author?.id === currentUser?.id) {
             setEditable(true);
         }
+        document.addEventListener("keydown", handleEscape, false);
     }, [currentUser, author])
 
     const handleDelete = (e) => {
@@ -33,12 +34,19 @@ export default function FirstMessage({message}) {
     }
 
     const handleSubmit = e => {
-        dispatch(updateMessage({...message, body: body}))
-        dispatch(openModal('view'));
+        if (body === "") {
+            setBody(message.body)
+            dispatch(openModal('view'))
+        } else {
+            dispatch(updateMessage({...message, body: body}))
+            dispatch(openModal('view'));
+        }
     }
 
     const handleEscape = e => {
-        dispatch(openModal('view'));
+        if (e.code === 'Escape') {
+            dispatch(openModal('view'));
+        }
     }
 
     // const formatter = new Intl.DateTimeFormat("en-GB", {
@@ -73,12 +81,15 @@ export default function FirstMessage({message}) {
                             </div>
                         </ul>
                         <div className="message-length">
-                            {modal.modal==='edit' && modal.id===message.id ? <textarea onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
-                                if (e.code === 'Enter' && !e.shiftKey) {
-                                    handleSubmit(e);
-                                } else if (e.code === 'Escape' && !e.shiftKey) {
-                                    handleEscape(e);
-                                }}}></textarea> : 
+                            {modal.modal==='edit' && modal.id===message.id ? <div className="edit-message-operations">
+                                    <textarea className="edit-textbox" onChange={e => setBody(e.target.value)} value={body} onKeyDown={e => {
+                                    if (e.code === 'Enter' && !e.shiftKey) {
+                                        handleSubmit(e);
+                                    } else if (e.code === 'Escape' && !e.shiftKey) {
+                                        handleEscape(e);
+                                    }}}></textarea> 
+                                    <div>escape to cancel, enter to save</div>
+                                </div> : 
                                 <p className="message-body">{message.body}</p>
                             }
                         </div>

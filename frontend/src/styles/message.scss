@@ -53,6 +53,8 @@
 .message-username {
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: 16px;
+    color: #F2F3F5;
 }
 
 .message-profile > li {
@@ -87,7 +89,7 @@
     object-fit: cover;
     border-radius: 50%;
     // border: solid red;
-    margin-left: 20px;
+    margin-left: 25px;
     margin-top: 5px;
 }
 
@@ -110,6 +112,7 @@
     line-height: 125%;
 }
 
+
 // .space {
 //     width: 50px;
 //     position: absolute;
@@ -121,6 +124,9 @@
     position: relative;
     word-wrap: break-word;
     width: 90%;
+    font-size: 16px;
+    color: #DBDEE1;
+
 }
 
 .message-profile.absolute {
@@ -130,7 +136,30 @@
 
 }
 
+.edit-textbox {
+    background-color: #3a3a40;
+    color:#DBDEE1;
+    font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border: none;
+    resize: none;
+    border-radius: 8px;
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    appearance: none;
+    // font-size: 15px;
+
+}   
 
 .edit-button.new {
     margin-left: -59px !important;
 }
+
+.edit-message-operations {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+}
+

@@ -7,6 +7,7 @@ import DmsIndex from "../DmsIndex/DmsIndex";
 import NavBar from "../NavBar/NavBar";
 import { useState } from "react";
 import DmsIndexItem from "../DmsIndexItem/DmsIndexItem";
+import { closeModal } from "../../store/modal";
 
 export default function Channel() {
     const dispatch = useDispatch();
@@ -21,10 +22,7 @@ export default function Channel() {
 
     const handleLogout = (e) => {
         dispatch(logout());
-    }
-
-    const handleNavigate = (e) => {
-
+        dispatch(closeModal());
     }
 
     return (
@@ -45,8 +43,8 @@ export default function Channel() {
                     </div>
                     <div className="profile">
                         <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
-                        <p>{currentUser.username}</p>
-                        <button onClick={handleLogout}>Logout</button>
+                        <p className="username">{currentUser.username}</p>
+                        <button className="logout-button" onClick={handleLogout}>Logout</button>
                     </div>
                 </div>
                 <div className="content-container">
