@@ -19,7 +19,7 @@ ApplicationRecord.transaction do
     User.create!(
       username: 'Demo-lition', 
       email: 'demo@user.io', 
-      password: 'password',
+      password: 'passwords',
       pfp_url: 'profilepic',
       status: 'offline'
     )
