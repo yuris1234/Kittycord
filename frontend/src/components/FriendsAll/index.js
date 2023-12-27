@@ -15,7 +15,9 @@ export default function FriendsAll({setCurrentDm}) {
 
     const handleClick = (friendId) => async (e) => {
         let exists = true;
+        console.log(dms);
         Object.values(dms).forEach((dm) => {
+            console.log('hi');
             if (dm.members.includes(friendId)) {
                 dispatch(openModal('view'));
                 setCurrentDm(dm.id)
@@ -23,7 +25,8 @@ export default function FriendsAll({setCurrentDm}) {
                 return;
             }
         })
-        if (exists) {
+        console.log(exists);
+        if (exists === true) {
             const newDm = await dispatch(createDm(user.id, friendId));
             await dispatch(openModal('view'))
             setCurrentDm(newDm.dm.id)

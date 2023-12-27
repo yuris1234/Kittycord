@@ -9,10 +9,25 @@ ApplicationRecord.transaction do
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     User.destroy_all
+    Server.destroy_all
+    Friend.destroy_all
+    FriendRequest.destroy_all
+    Channel.destroy_all
+    MembershipJoin.destroy_all
+    Message.destroy_all
+    Dm.destroy_all
+
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
+    ApplicationRecord.connection.reset_pk_sequence!('servers')
+    ApplicationRecord.connection.reset_pk_sequence!('friends')
+    ApplicationRecord.connection.reset_pk_sequence!('friend_requests')
+    ApplicationRecord.connection.reset_pk_sequence!('channels')
+    ApplicationRecord.connection.reset_pk_sequence!('membership_joins')
+    ApplicationRecord.connection.reset_pk_sequence!('messages')
+    ApplicationRecord.connection.reset_pk_sequence!('dms')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -86,18 +101,18 @@ ApplicationRecord.transaction do
       friended: 1
     )
 
-    Server.create!(
+    server = Server.create!(
       owner_id: 1
     )
 
     Channel.create!(
-      server_id: 1
+      server_id: server.id
     )
 
     MembershipJoin.create!(
       user_id: 1,
       membership_type: "Server",
-      membership_id: 1
+      membership_id: server.id
     )
 
     MembershipJoin.create!(

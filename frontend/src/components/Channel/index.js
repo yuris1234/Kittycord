@@ -12,7 +12,7 @@ import { closeModal } from "../../store/modal";
 export default function Channel() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
-    const [view, setView] = useState('online')
+    const [view, setView] = useState('all')
     const [currentDm, setCurrentDm] = useState(null);
     const dms = useSelector(state => state.dms)
 
@@ -49,7 +49,7 @@ export default function Channel() {
                 </div>
                 <div className="content-container">
                     <NavBar setView={setView}/> 
-                    <DmsIndex currentDm={currentDm} view={view} setView={setView} user={currentUser}/>
+                    <DmsIndex setCurrentDm={setCurrentDm} currentDm={currentDm} view={view} setView={setView} user={currentUser}/>
                 </div>
             {/* </div> */}
         </>

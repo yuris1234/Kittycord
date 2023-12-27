@@ -29,22 +29,22 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  has_many :membership_joins
+  has_many :membership_joins, dependent: :destroy
   has_many :dms, through: :membership_joins, source_type: "Dm", source: :membership
-  has_many :messages, foreign_key: :author_id, inverse_of: :author
-  has_many :owned_servers, class_name: :Server, foreign_key: :owner_id
+  has_many :messages, foreign_key: :author_id, inverse_of: :author, dependent: :destroy
+  has_many :owned_servers, class_name: :Server, foreign_key: :owner_id, dependent: :destroy
   has_many :channels, through: :membership_joins, source_type: "Channel", source: :membership
   has_many :servers, through: :channels
 
 
-  has_many :friendships1, foreign_key: :friend_1, class_name: :Friend
-  has_many :friendships2, foreign_key: :friend_2, class_name: :Friend
+  has_many :friendships1, foreign_key: :friend_1, class_name: :Friend, dependent: :destroy
+  has_many :friendships2, foreign_key: :friend_2, class_name: :Friend, dependent: :destroy
   
   has_many :friends1, through: :friendships1, source: :user_2
   has_many :friends2, through: :friendships2, source: :user_1
 
-  has_many :sent_friend_requests, foreign_key: :friender, class_name: :FriendRequest
-  has_many :received_friend_requests, foreign_key: :friended, class_name: :FriendRequest
+  has_many :sent_friend_requests, foreign_key: :friender, class_name: :FriendRequest, dependent: :destroy
+  has_many :received_friend_requests, foreign_key: :friended, class_name: :FriendRequest, dependent: :destroy
 
   def self.find_by_credentials(credential, password) 
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username
