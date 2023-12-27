@@ -19,21 +19,107 @@ ApplicationRecord.transaction do
     User.create!(
       username: 'Demo-lition', 
       email: 'demo@user.io', 
-      password: 'passwords',
+      password: 'password',
       pfp_url: 'profilepic',
       status: 'offline'
     )
-  
-    # More users
-    10.times do 
-      User.create!({
-        username: Faker::Internet.unique.username(specifier: 3),
-        email: Faker::Internet.unique.email,
-        password: 'password',
-        pfp_url: 'pfp',
-        status: 'offline'
-      }) 
-    end
-  
+
+    User.create!(
+      username: 'bobbycat', 
+      email: 'bobbycat@gmail.com', 
+      password: 'password',
+      pfp_url: 'profilepic',
+      status: 'offline'
+    )
+
+    User.create!(
+      username: 'kolacat', 
+      email: 'colacat@gmail.com', 
+      password: 'password',
+      pfp_url: 'profilepic',
+      status: 'offline'
+    )
+
+    User.create!(
+      username: 'leesoo', 
+      email: 'leesoo@gmail.com', 
+      password: 'password',
+      pfp_url: 'profilepic',
+      status: 'offline'
+    )
+
+    User.create!(
+      username: 'gamingcat', 
+      email: 'gamingcat@gmail.com', 
+      password: 'password',
+      pfp_url: 'profilepic',
+      status: 'offline'
+    )
+
+    User.create!(
+      username: 'lazycat', 
+      email: 'lazycat@gmail.com', 
+      password: 'password',
+      pfp_url: 'profilepic',
+      status: 'offline'
+    )
+
+    Friend.create!(
+      friend_1: 1,
+      friend_2: 2
+    )
+    Friend.create!(
+      friend_1: 1,
+      friend_2: 3
+    )
+    Friend.create!(
+      friend_1: 1,
+      friend_2: 4
+    )
+    FriendRequest.create!(
+      friender: 1,
+      friended: 5
+    )
+
+    FriendRequest.create!(
+      friender: 6,
+      friended: 1
+    )
+
+    Server.create!(
+      owner_id: 1
+    )
+
+    Channel.create!(
+      server_id: 1
+    )
+
+    MembershipJoin.create!(
+      user_id: 1,
+      membership_type: "Server",
+      memership_id: 1
+    )
+
+    MembershipJoin.create!(
+      user_id: 2,
+      membership_type: "Server",
+      memership_id: 1
+    )
+
+    Dm.create!()
+
+    MembershipJoin.create!(
+      user_id: 1,
+      membership_type: "Dm",
+      memership_id: 1
+    )
+
+    MembershipJoin.create!(
+      user_id: 3,
+      membership_type: "Dm",
+      memership_id: 1
+    )
+
+
     puts "Done!"
   end
