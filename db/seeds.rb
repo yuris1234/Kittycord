@@ -97,13 +97,13 @@ ApplicationRecord.transaction do
     MembershipJoin.create!(
       user_id: 1,
       membership_type: "Server",
-      memership_id: 1
+      membership_id: 1
     )
 
     MembershipJoin.create!(
       user_id: 2,
       membership_type: "Server",
-      memership_id: 1
+      membership_id: 1
     )
 
     Dm.create!()
@@ -111,13 +111,13 @@ ApplicationRecord.transaction do
     MembershipJoin.create!(
       user_id: 1,
       membership_type: "Dm",
-      memership_id: 1
+      membership_id: 1
     )
 
     MembershipJoin.create!(
       user_id: 3,
       membership_type: "Dm",
-      memership_id: 1
+      membership_id: 1
     )
 
 
