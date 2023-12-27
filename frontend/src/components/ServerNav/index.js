@@ -4,19 +4,27 @@ import { getServers } from "../../store/server"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { fetchUser, getUser } from "../../store/user"
+// import ReactReduxContex from "react-redux"
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 import { closeModal } from "../../store/modal"
+import DiscordIcon from "../../assets/discord_icon"
 
 export default function ServerNav() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
-    const user = useSelector(getUser(currentUser.id))
+    const user = useSelector(getUser(currentUser?.id))
     const servers = useSelector(getServers(user?.serverIds))
+    
 
     useEffect(() => {
         if (currentUser) {
             dispatch(fetchUser(currentUser.id))
         }
     }, [currentUser])
+
+    if (!currentUser) {
+        return <Redirect to="/login"/>
+    }
 
     const handleClose = (e) => {
         dispatch(closeModal());
@@ -28,7 +36,7 @@ export default function ServerNav() {
                   <div className="server-tab">
                       <span className="server-tab-icon"></span>
                   </div>
-                  <img className="server-icon" src="https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
+                  <DiscordIcon/>
               </NavLink>
               <div className="server-divider"></div>
               {servers?.map((server) => {
@@ -37,7 +45,7 @@ export default function ServerNav() {
                     <div className="server-tab">
                         <span className="server-tab-icon"></span>
                     </div>
-                    <img className="server-icon" src="https://capycord.onrender.com/static/media/icon.544887f99d55e652be72.png"/>
+                    <div className="server-name-icon">{server.name[0]}</div>
                 </NavLink>
                 )
               })}

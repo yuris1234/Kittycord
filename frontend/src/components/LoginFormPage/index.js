@@ -43,6 +43,10 @@ function LoginFormPage() {
         setPassword(e.target.value);
     }
 
+    const handleDemo = (e) => {
+        dispatch(login({credential: "Demo-lition", password: "password"}))
+    }
+
     return (
         <>
             <div className="form-container">
@@ -68,6 +72,7 @@ function LoginFormPage() {
                     <div>
                         <p className="register-text">Need an account? <Link to="/signup"><span className="register">Register</span></Link></p>
                     </div>
+                    <input type="submit" value="Demo Login" className="submit" onClick={handleDemo} />
                 </div>
                 <LoginBackground className="login-background"/>
             </div>
