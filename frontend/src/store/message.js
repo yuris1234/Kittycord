@@ -39,13 +39,11 @@ export const updateMessage = message => async (dispatch) => {
 export const createMessage = (message) => async (dispatch) => {
     const res = await csrfFetch('/api/messages', {method: 'POST', body: JSON.stringify(message), headers: {'Content-Type': 'application/json'}});
     const data = await res.json();
-    // dispatch(receiveMessage(data));
 }
 
 export const deleteMessage = (messageId) => async (dispatch) => {
     const res = await csrfFetch(`/api/messages/${messageId}`, {method: 'DELETE'});
     const data = await res.json();
-    // dispatch(removeMessage(messageId));
 }
 
 
