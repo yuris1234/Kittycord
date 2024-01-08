@@ -38,7 +38,7 @@ export default function Server() {
             <div className="dms-wrapper">
                 <div>
                     <div className="search-bar server">
-                        <h1>{server?.name}</h1>
+                        <h1>{server?.name === "server" ? `${currentUser.username}'s Server` : server?.name}</h1>
                     </div>
                     <ul className="dms-list server">
                         {channels?.map((channel) => {
