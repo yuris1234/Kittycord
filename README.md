@@ -1,7 +1,9 @@
 # Kittycord
 
+![Live Link](https://kittycord.onrender.com)
+
 ## Description
-Kittycord is a clone of Discord, a text/voice chat app marketed towards gamers, but used by people of all ages to connect to their friends and more online communities. Because it is a clone, I aimed to replicate Discord's appearance as much as I feasibly could. I personally love Discord's layout and UX, which is why I chose it for my project.
+Kittycord is a clone of Discord, a text/voice chat app made for people (especially cat lovers) of all ages to connect to their friends and more online communities. Because it is a clone, I aimed to replicate Discord's appearance as much as I feasibly could. I personally love Discord's layout and UX, which is why I chose it for my project.
 
 ## Features (to be updated)
 1. User Authentication
