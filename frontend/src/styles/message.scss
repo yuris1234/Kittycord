@@ -10,6 +10,7 @@
     right: 0px;
     display: flex;
     margin-left: 0px !important;
+    justify-content: space-around;
 }
 
 .edit-button button {
@@ -163,3 +164,27 @@
     height: 100%;
 }
 
+.message-buttons:hover {
+    cursor: pointer;
+    background-color: black;
+}
+
+.message-buttons:hover + .delete-icon {
+    color: red;
+}
+
+.delete-icon {
+    color: red;
+}
+
+.edit-message-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+}
+
+.delete-message-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+}

@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 import { updateMessage } from "../../store/message";
 import { useHover } from "@uidotdev/usehooks";
 import { useRef } from "react";
-
+import Edit from "../../assets/edit";
+import Delete from "../../assets/delete";
 
 export default function FirstMessage({message}) {
     const dispatch = useDispatch();
@@ -97,8 +98,8 @@ export default function FirstMessage({message}) {
                 </div>
                     {editable && (
                     <div className="edit-button new hide">
-                        <button onClick={handleModal}>Edit</button>
-                        <button onClick={handleDelete}>Delete</button>
+                        <div className="message-buttons edit-message-icon" onClick={handleModal}><Edit/></div>
+                        <div className="message-buttons delete-message-icon" onClick={handleDelete}><Delete/></div>
                     </div>
                     )}
             </div>

@@ -5,6 +5,8 @@ import { openModal } from "../../store/modal";
 import { useSelector } from "react-redux";
 import { useRef } from "react";
 import { updateMessage } from "../../store/message";    
+import Edit from "../../assets/edit";
+import Delete from "../../assets/delete";
 
 export default function UntimedMessage({first, message}) {
     const dispatch = useDispatch();
@@ -79,8 +81,8 @@ export default function UntimedMessage({first, message}) {
                 {editable && (
                     <ul className="message-profile absolute">
                         <div className="edit-button hide">
-                            <button onClick={handleModal}>Edit</button>
-                            <button onClick={handleDelete}>Delete</button>
+                        <div className="message-buttons edit-message-icon" onClick={handleModal}><Edit/></div>
+                        <div className="message-buttons delete-message-icon" onClick={handleDelete}><Delete/></div>
                         </div>
                     </ul>
                 )}
