@@ -36,7 +36,6 @@ function NavBar({setView}) {
                 </div>
                 <li className="nav-button" onClick={handleAll}>All</li>
                 <li className="nav-button" onClick={handlePending}>Pending</li>
-                <li className="nav-button">Blocked</li>
                 <li className="nav-button add-friend" onClick={handleAddFriend}>Add Friend</li>
             </ul>
         </div>

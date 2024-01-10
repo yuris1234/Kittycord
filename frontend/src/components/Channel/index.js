@@ -30,7 +30,7 @@ export default function Channel() {
                 <div className="dms-wrapper">
                     <div>
                         <div className="search-bar">
-                            <button type="button" className="search-button" >Find or start a conversation</button>
+                            <button type="button" className="search-button" >Welcome to Kittycord!</button>
                         </div>
                         <div>
                             <h1 className="direct-messages">Direct Messages</h1>
