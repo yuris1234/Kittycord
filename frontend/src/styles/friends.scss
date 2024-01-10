@@ -160,6 +160,7 @@
 
 .send-friend-request:hover {
     filter: brightness(80%);
+    cursor: pointer !important;
 }
 
 .search-bar:hover {
@@ -167,7 +168,7 @@
 }
 
 .add-friend-search-button:hover {
-    cursor:text;
+    cursor:text !important;
 }
 
 .filled {

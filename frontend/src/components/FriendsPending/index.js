@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getFriends } from "../../store/user"
+import { fetchUser, getFriends } from "../../store/user"
 import { getUser } from "../../store/user"
 import MessageIcon from "../../assets/messageIcon"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
@@ -21,8 +21,8 @@ export default function FriendsPending() {
     const receivedFriendRequests = useSelector(getIncomingRequests(user?.receivedFriendRequests))
 
     useEffect(() => {
-        
-    }, [dispatch,friendRequests])
+        dispatch(fetchUser(currentUser?.id))
+    }, [dispatch])
 
     const handleAccept = (requestId, friendId) => async (e) => {
         await dispatch(deleteFriendRequest(requestId));
