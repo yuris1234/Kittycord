@@ -4,6 +4,11 @@ import { RECEIVE_USER } from "./user";
 export const RECEIVE_FRIEND_REQUEST = "friendRequests/RECEIVE_FRIEND_REQUEST";
 export const REMOVE_FRIEND_REQUEST = "friendRequests/REMOVE_FRIEND_REQUEST";
 
+export const receiveFriendRequest = (request) => ({
+    type: RECEIVE_FRIEND_REQUEST,
+    payload: request
+})
+
 export const removeFriendRequest = (requestId) => ({
     type: REMOVE_FRIEND_REQUEST,
     payload: requestId
@@ -31,8 +36,19 @@ export const getIncomingRequests = (requestArray) => (state) => {
     return holder;
 }
 
-export const createFriendRequest = (frienderId, friendedId) => async (dispatch) => {
-
+export const createFriendRequest = (frienderId, username) => async (dispatch) => {
+    const res = await csrfFetch(`/api/friend_requests`, {method: "POST", body: JSON.stringify(
+        {
+            friended: username,
+            friender: frienderId
+        }
+    )});
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receiveFriendRequest(data));
+    } else {
+        return res;
+    }
 }
 
 export const deleteFriendRequest = (requestId) => async (dispatch) => {
@@ -49,6 +65,9 @@ const friendRequestsReducer = (state = {}, action) => {
             return {...nextState, ...action.payload.friendRequests}
         case REMOVE_FRIEND_REQUEST:
             delete nextState[action.payload];
+            return nextState;
+        case RECEIVE_FRIEND_REQUEST: 
+            nextState[action.payload.id] = action.payload;
             return nextState;
         default:
             return nextState;

@@ -19,6 +19,11 @@ function NavBar({setView}) {
         setView('pending')
         dispatch(closeModal());
     }
+
+    const handleAddFriend = (e) => {
+        setView('add-friend')
+        dispatch(closeModal())
+    }
     
     return (
         <div className="nav-container">
@@ -32,7 +37,7 @@ function NavBar({setView}) {
                 <li className="nav-button" onClick={handleAll}>All</li>
                 <li className="nav-button" onClick={handlePending}>Pending</li>
                 <li className="nav-button">Blocked</li>
-                <li className="nav-button add-friend">Add Friend</li>
+                <li className="nav-button add-friend" onClick={handleAddFriend}>Add Friend</li>
             </ul>
         </div>
     )

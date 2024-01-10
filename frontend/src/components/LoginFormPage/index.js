@@ -29,6 +29,7 @@ function LoginFormPage() {
                 } catch {
                     data = await res.text();
                 }
+                console.log(data);
                 if (data?.errors) setErrors(prevErrors => [...prevErrors, ...data.errors]);
                 else if (data) setErrors(prevErrors => [...prevErrors, ...data]);
                 else setErrors(prevErrors => [...prevErrors, ...res.statusText]);

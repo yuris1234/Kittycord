@@ -10,13 +10,19 @@ import { getIncomingRequests } from "../../store/friendRequest"
 import Cancel from "../../assets/cancel"
 import Accept from "../../assets/accept"
 import { createFriend } from "../../store/user"
+import { useEffect } from "react"
 
 export default function FriendsPending() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
     const user = useSelector(getUser(currentUser?.id))
+    const friendRequests = useSelector(state => state.friendRequests)
     const sentFriendRequests = useSelector(getOutgoingRequests(user?.sentFriendRequests)) 
     const receivedFriendRequests = useSelector(getIncomingRequests(user?.receivedFriendRequests))
+
+    useEffect(() => {
+        
+    }, [dispatch,friendRequests])
 
     const handleAccept = (requestId, friendId) => async (e) => {
         await dispatch(deleteFriendRequest(requestId));

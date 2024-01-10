@@ -1,42 +1,33 @@
 class Api::FriendRequestsController < ApplicationController
-    def index
-        @friend_requests = FriendRequest.all
-        render :index
-    end
+    # def index
+    #     @friend_requests = FriendRequest.all
+    #     render :index
+    # end
 
-    def show
-        @friend_request = FriendRequest.find(params[:id])
-        @friender = User.find_by(@friend_request[:friender]);
-        @friended = User.find_by(@friend_request[:friended]);
+    # def show
+    #     @friend_request = FriendRequest.find(params[:id])
+    #     @friender = User.find_by(@friend_request[:friender]);
+    #     @friended = User.find_by(@friend_request[:friended]);
         
-        if @friend_request && @friender && @friended 
-            render :show
-        else
-            render json: {errors: 'Friend request not found'}
-        end
-    end
-
-    def update
-        @friend_request = FriendRequest.find(params[:id])
-        @friender = User.find_by(@friend_request[:friender]);
-        @friended = User.find_by(@friend_request[:friended]);
-
-        if @friend_request.update(friend_params)
-            render :show
-        else 
-            render json: {errors: @friend_request.errors.full_messages}
-        end
-    end
+    #     if @friend_request && @friender && @friended 
+    #         render :show
+    #     else
+    #         render json: {errors: 'Friend request not found'}
+    #     end
+    # end
 
     def create
-        @friend_request = FriendRequest.new(friend_params)
-        @friender = User.find_by(@friend_request[:friender]);
-        @friended = User.find_by(@friend_request[:friended]);
-
-        if @friend_request.save
-            render :show
-        else
-            render json: {errors: @friend.errors.full_messages }
+        print friend_request_params
+        user = User.find_by(username: friend_request_params[:friended])
+        if user 
+            @friend_request = FriendRequest.new(friender: friend_request_params[:friender], friended: user.id)
+            if @friend_request.save
+                render :show
+            else
+                render json: {errors: ["User is already friended, or has a pending requeset"] }, status: :unauthorized
+            end
+        else 
+            render json: {errors: ["User could not be found"]}, status: 404
         end
     end
 

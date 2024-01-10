@@ -107,3 +107,75 @@
     width: 9%;
     justify-content: space-between;
 }
+
+.add-friend-header {
+    font-weight: 900;
+}
+
+.friends-list.add-friend-list {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.friends-list.add-friend-list li {
+    margin-top: 10px;
+    color: #949ba4;
+}
+
+.add-friend-search-bar {
+    border: none;
+    margin-left: 0;
+    padding-left: 0;
+    width: 50%;
+    height: 50px;
+    margin-top: 20px;
+    background-color: #1e1f22;
+    color: #949ba4;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.add-friend-search-button {
+    height: 90%;
+    padding-left: 10px;
+    background-color: none;
+    border-radius: 5px;
+}
+
+.send-friend-request {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    background-color: #5865F2;
+    width: 20%;
+    filter: brightness(85%);
+}
+
+.send-friend-request:hover {
+    filter: brightness(80%);
+}
+
+.search-bar:hover {
+    cursor: none;
+}
+
+.add-friend-search-button:hover {
+    cursor:text;
+}
+
+.filled {
+    // background-color: ;
+    color: white;
+    filter: brightness(100%);
+}
+
+.success-message {
+    color: #22a559 !important;
+}

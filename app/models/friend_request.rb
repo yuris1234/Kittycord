@@ -25,7 +25,12 @@ class FriendRequest < ApplicationRecord
           "(friend_1 = :friender AND friend_2 = :friended) OR (friend_1 = :friended AND friend_2 = :friender)",
           {friender: self.friender, friended: self.friended}
           ]).length > 0)
-            errors.add(:base, 'Already friended')
+            errors.add(:base, 'Already friends')
+        elsif (FriendRequest.where([
+          "(friender = :friender AND friended = :friended) OR (friender = :friended AND friended = :friender)",
+          {friender: self.friender, friended: self.friended}
+          ]).length > 0)
+            errors.add(:base, 'Already friend, or user has already friended you')
         else
             return
         end
