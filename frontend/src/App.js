@@ -12,10 +12,16 @@ import Server from "./components/Servers/index.js";
 import Channel from "./components/Channel/index.js";
 import { useSelector } from "react-redux";
 import ServerNav from "./components/ServerNav/index.js";
+import { closeModal } from "./store/modal.js";
 
 function App() {
+  const modal = useSelector(state => state.modals);
+
   return (
     <>
+      {modal.modal === "add-server" && 
+                <Modal />
+            }
       <Switch>
         <Route exact path="/">
           <Splash />

@@ -8,6 +8,8 @@ import { fetchUser, getUser } from "../../store/user"
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min"
 import { closeModal } from "../../store/modal"
 import DiscordIcon from "../../assets/discord_icon"
+import Plus from "../../assets/plus"
+import { openModal } from "../../store/modal"
 
 export default function ServerNav() {
     const dispatch = useDispatch();
@@ -30,6 +32,10 @@ export default function ServerNav() {
         dispatch(closeModal());
     }
 
+    const handleCreate = (e) => {
+        dispatch(openModal("add-server"))
+    }
+
     return (
         <div className="server-container"> 
               <NavLink onClick={handleClose} className="server-icon-wrapper" to="/channels" activeClassName="active-link">
@@ -49,6 +55,12 @@ export default function ServerNav() {
                 </NavLink>
                 )
               })}
+              <div className="server-icon-wrapper create-server">
+                <div className="server-tab">
+                    <span className="server-tab-icon"></span>
+                </div>
+                <Plus />
+              </div>
           </div>
     )
 }

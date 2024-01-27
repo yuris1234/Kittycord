@@ -4,28 +4,27 @@ import { closeModal } from "../../store/modal";
 import { useSelector } from "react-redux";
 
 function Modal() {
-    const modalSlice = useSelector(state => state.modals)
+    // const modalSlice = useSelector(state => state.modals)
 
-    if (!modalSlice) {
-        return <h1>hello from modal</h1>;
-    }
+    // if (!modalSlice) {
+    //     return <h1>hello from modal</h1>;
+    // }
 
-    let component;
+    // let component;
 
-    switch (modalSlice.modal) {
-        case 'edit':
-            component = <EditMessage  messageId={modalSlice.messageId}/>
-            break;
-        default:
-            return null;
-    }
+    // switch (modalSlice.modal) {
+    //     case 'edit':
+    //         component = <EditMessage  messageId={modalSlice.messageId}/>
+    //         break;
+    //     default:
+    //         return null;
+    // }
 
     return (
         <>
-            <h1>hello from modal</h1>
             <div className="modal-background" onClick={closeModal}>
                 <div className="modal-child" onClick={e => e.stopPropagation()}>
-                    {component}
+                    hello from modal
                 </div>
             </div>
         </>

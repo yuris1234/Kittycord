@@ -8,6 +8,7 @@ import NavBar from "../NavBar/NavBar";
 import { useState } from "react";
 import DmsIndexItem from "../DmsIndexItem/DmsIndexItem";
 import { closeModal } from "../../store/modal";
+import Modal from "../Modal/Modal";
 
 export default function Channel() {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export default function Channel() {
     const [view, setView] = useState('all')
     const [currentDm, setCurrentDm] = useState(null);
     const dms = useSelector(state => state.dms)
+    // const modal = useSelector(state => state.modals);
 
     if (!currentUser) {
         return <Redirect to="/login"/>
@@ -27,6 +29,9 @@ export default function Channel() {
 
     return (
         <>
+            {/* {modal.modal === "add-server" && 
+                <Modal />
+            } */}
                 <div className="dms-wrapper">
                     <div>
                         <div className="search-bar">
@@ -51,7 +56,7 @@ export default function Channel() {
                     <NavBar setView={setView}/> 
                     <DmsIndex setCurrentDm={setCurrentDm} currentDm={currentDm} view={view} setView={setView} user={currentUser}/>
                 </div>
-            {/* </div> */}
+            
         </>
     )
 }
