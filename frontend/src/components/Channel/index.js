@@ -16,7 +16,7 @@ export default function Channel() {
     const [view, setView] = useState('all')
     const [currentDm, setCurrentDm] = useState(null);
     const dms = useSelector(state => state.dms)
-    // const modal = useSelector(state => state.modals);
+    const modal = useSelector(state => state.modals);
 
     if (!currentUser) {
         return <Redirect to="/login"/>
@@ -29,9 +29,9 @@ export default function Channel() {
 
     return (
         <>
-            {/* {modal.modal === "add-server" && 
+            {modal.modal === "add-server" && 
                 <Modal />
-            } */}
+            }
                 <div className="dms-wrapper">
                     <div>
                         <div className="search-bar">

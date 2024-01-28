@@ -20,8 +20,8 @@ function App() {
   return (
     <>
       {modal.modal === "add-server" && 
-                <Modal />
-            }
+        <Modal />
+      }
       <Switch>
         <Route exact path="/">
           <Splash />
