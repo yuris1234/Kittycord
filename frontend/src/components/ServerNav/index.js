@@ -28,9 +28,9 @@ export default function ServerNav() {
         return <Redirect to="/login"/>
     }
 
-    // const handleClose = (e) => {
-    //     dispatch(closeModal());
-    // }
+    const handleClose = (e) => {
+        dispatch(closeModal());
+    }
 
     const handleCreate = (e) => {
         dispatch(openModal("add-server"))
