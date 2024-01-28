@@ -10,8 +10,35 @@
   
   .modal-child {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 45%;
     color: white;
     transform: translate(-50%, -50%);
+  }
+
+  .modal-popup {
+    background-color: blue;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f2f3f5;
+    background-color: #313338;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 35px;
+    border-radius: 2%;
+  }
+
+  .modal-header {
+    font-weight: 900;
+    font-size: 24px;
+  }
+
+  .modal-text {
+    // font-weight: 500;
+    font-weight: 0;
+    font-size: 14px;
   }
