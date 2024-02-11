@@ -35,7 +35,7 @@ ApplicationRecord.transaction do
       username: 'Demo-lition', 
       email: 'demo@user.io', 
       password: 'password',
-      pfp_url: 'profilepic',
+      pfp_url: 'https://t4.ftcdn.net/jpg/00/97/58/97/360_F_97589769_t45CqXyzjz0KXwoBZT9PRaWGHRk5hQqQ.jpg',
       status: 'offline'
     )
 
@@ -43,7 +43,7 @@ ApplicationRecord.transaction do
       username: 'bobbycat', 
       email: 'bobbycat@gmail.com', 
       password: 'password',
-      pfp_url: 'profilepic',
+      pfp_url: 'https://hips.hearstapps.com/hmg-prod/images/cute-cat-photos-1593441022.jpg?crop=0.670xw:1.00xh;0.167xw,0&resize=640:*',
       status: 'offline'
     )
 
@@ -51,7 +51,7 @@ ApplicationRecord.transaction do
       username: 'kolacat', 
       email: 'colacat@gmail.com', 
       password: 'password',
-      pfp_url: 'profilepic',
+      pfp_url: 'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
       status: 'offline'
     )
 
@@ -59,7 +59,7 @@ ApplicationRecord.transaction do
       username: 'leesoo', 
       email: 'leesoo@gmail.com', 
       password: 'password',
-      pfp_url: 'profilepic',
+      pfp_url: 'https://wallpapers.com/images/featured/cat-pictures-zc3gu0636kmldm04.jpg',
       status: 'offline'
     )
 
@@ -67,7 +67,7 @@ ApplicationRecord.transaction do
       username: 'gamingcat', 
       email: 'gamingcat@gmail.com', 
       password: 'password',
-      pfp_url: 'profilepic',
+      pfp_url: 'https://www.forbes.com/advisor/wp-content/uploads/2023/09/how-much-does-a-cat-cost.jpeg-900x510.jpg',
       status: 'offline'
     )
 
@@ -75,7 +75,7 @@ ApplicationRecord.transaction do
       username: 'lazycat', 
       email: 'lazycat@gmail.com', 
       password: 'password',
-      pfp_url: 'profilepic',
+      pfp_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg',
       status: 'offline'
     )
 

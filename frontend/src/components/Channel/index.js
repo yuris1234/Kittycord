@@ -47,7 +47,7 @@ export default function Channel() {
                         </div>
                     </div>
                     <div className="profile">
-                        <img className="pfp" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
+                        <img className="pfp" src={currentUser.pfpUrl} />
                         <p className="username">{currentUser.username}</p>
                         <button className="logout-button" onClick={handleLogout}>Logout</button>
                     </div>
