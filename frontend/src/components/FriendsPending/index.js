@@ -55,7 +55,7 @@ export default function FriendsPending() {
                     return (
                     <div className="friend-item">
                         <ul className="message-profile friends">
-                            <img className="pfp friends" src="https://th-thumbnailer.cdn-si-edu.com/bgmkh2ypz03IkiRR50I-UMaqUQc=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/55/95/55958815-3a8a-4032-ac7a-ff8c8ec8898a/gettyimages-1067956982.jpg" />
+                            <img className="pfp friends" src={Object.values(friender)[0].pfpUrl} />
                             <div className="friend-details">
                                 <li className="message-username">{Object.values(friender)[0]?.username}</li>
                                 <p className="friend-status">Incoming Friend Request</p>
