@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function Modal() {
     const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.user)
     const [ serverName, setServerName ]  = useState('')
     // const modalSlice = useSelector(state => state.modals)
 
@@ -39,11 +40,11 @@ function Modal() {
                     <div className="modal-popup">
                         <h1 className="modal-header">Create Your Server</h1>
                         <p className="modal-text">Give your new server a personality with a name.</p>
-                        <div className="friends-container">
-                            <ul className="friends-list add-friend-list">
+                        <div className="friends-container center">
+                            <ul className="friends-list add-friend-list modal">
                                 <h1 className="add-friend-header">SERVER NAME</h1>
                                 <div className="search-bar add-friend-search-bar">
-                                    <input value={serverName} onChange={handleChange} type="text" placeholder="'s server'" className="search-button add-friend-search-button" />
+                                    <input value={serverName} onChange={handleChange} type="text" placeholder={`${currentUser.username}'s server`} className="search-button add-friend-search-button" />
                                 </div>
                             </ul>
                         </div>
