@@ -2,6 +2,7 @@ class Api::ServersController < ApplicationController
 
     def create
         @server = Server.new(server_params)
+        p @server
         if @server.save
             render :show
         else

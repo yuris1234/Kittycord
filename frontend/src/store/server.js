@@ -21,6 +21,17 @@ export const getServers = (serverIds) => (state) => {
     }
 }
 
+export const createServer = (userId, server) => async (dispatch) => {
+    const res = await csrfFetch('/api/servers', {method: "POST", body: JSON.stringify(server)});
+    if (res.ok) {
+        const data = await res.json();
+        const res2 = await csrfFetch('/api/membership_joins', {method: "POST", body: JSON.stringify({user_id: userId, membership_type: "Server", membership_id: data.server.id}), headers: {'Content-Type': 'application/json'}});
+        if (res2.ok) {
+            dispatch(receiveServer(data));
+        }
+    }
+}
+
 export const fetchServer = (serverId) => async (dispatch) => {
     const res = await csrfFetch(`/api/servers/${serverId}`);
     if (res.ok) {
