@@ -33,9 +33,7 @@ function Modal() {
         setServerName(e.target.value)
     }
 
-    const handleSubmit = (e) => {
-        
-    }
+    const handleSubmit = (e) => {}
 
     return (
         <>
@@ -44,8 +42,8 @@ function Modal() {
                     <div className="modal-popup">
                         <h1 className="modal-header">Create Your Server</h1>
                         <p className="modal-text">Give your new server a personality with a name.</p>
-                        <div className="friends-container">
-                            <ul className="friends-list add-friend-list">
+                        <div className="friends-container modal">
+                            <ul className="friends-list add-friend-list create-server">
                                 <h1 className="add-friend-header">SERVER NAME</h1>
                                 <div className="search-bar add-friend-search-bar">
                                     <input value={serverName} onChange={handleChange} type="text" placeholder={`${currentUser.username}'s server`} className="search-button add-friend-search-button" />
