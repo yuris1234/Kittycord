@@ -8,6 +8,7 @@ import { useState } from "react";
 function Modal() {
     const dispatch = useDispatch();
     const [ serverName, setServerName ]  = useState('')
+    const currentUser = useSelector(state => state.session.user)
     // const modalSlice = useSelector(state => state.modals)
 
     // if (!modalSlice) {
@@ -32,6 +33,10 @@ function Modal() {
         setServerName(e.target.value)
     }
 
+    const handleSubmit = (e) => {
+        
+    }
+
     return (
         <>
             <div className="modal-background" onClick={handleClose}>
@@ -43,7 +48,7 @@ function Modal() {
                             <ul className="friends-list add-friend-list">
                                 <h1 className="add-friend-header">SERVER NAME</h1>
                                 <div className="search-bar add-friend-search-bar">
-                                    <input value={serverName} onChange={handleChange} type="text" placeholder="'s server'" className="search-button add-friend-search-button" />
+                                    <input value={serverName} onChange={handleChange} type="text" placeholder={`${currentUser.username}'s server`} className="search-button add-friend-search-button" />
                                 </div>
                             </ul>
                         </div>

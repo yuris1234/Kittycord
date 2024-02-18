@@ -55,7 +55,7 @@ export default function ServerNav() {
                 </NavLink>
                 )
               })}
-              <div className="server-icon-wrapper create-server">
+              <div onClick={handleCreate} className="server-icon-wrapper create-server">
                 <div className="server-tab">
                     <span className="server-tab-icon"></span>
                 </div>
