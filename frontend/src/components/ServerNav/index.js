@@ -33,7 +33,7 @@ export default function ServerNav() {
     }
 
     const handleCreate = (e) => {
-        // dispatch(openModal("add-server"))
+        dispatch(openModal("add-server"))
     }
 
     return (
