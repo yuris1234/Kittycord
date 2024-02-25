@@ -35,7 +35,10 @@ function Modal() {
     }
 
     const handleSubmit = (e) => {
-        dispatch(createServer(currentUser.id, {owner_id: currentUser.id, name: serverName}))
+        if (serverName != "") {
+            dispatch(createServer(currentUser.id, {owner_id: currentUser.id, name: serverName}))
+            dispatch(closeModal());
+        }
     }
 
     return (
