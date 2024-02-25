@@ -10,7 +10,6 @@ function Modal() {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user)
     const [ serverName, setServerName ]  = useState('')
-    const currentUser = useSelector(state => state.session.user)
     // const modalSlice = useSelector(state => state.modals)
 
     // if (!modalSlice) {
