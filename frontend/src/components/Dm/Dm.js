@@ -72,6 +72,7 @@ export default function Dm({dmId}) {
                 <ul className="dm-container" ref={ref}>
                     <div className="first"></div>
                     {messages.map((message, i) => {
+                        let timeDif = new Date() - new Date(message.createdAt);
                             if (author !== message.authorId) {
                                 author = message.authorId
                                 if (i === 0) {
