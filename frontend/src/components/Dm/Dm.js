@@ -64,6 +64,17 @@ export default function Dm({dmId}) {
         scrollBottom();
     })
 
+    function timeDif(date) {
+        let currentDate = new Date();
+        let pastDate = new Date(date);
+        let dif = Math.abs(currentDate - pastDate)
+        let hour = 60 * 60 * 1000;
+        if (dif > hour) {
+            return true;
+        }
+        return false;
+    }
+
     let author = null;
 
     return (
@@ -72,8 +83,7 @@ export default function Dm({dmId}) {
                 <ul className="dm-container" ref={ref}>
                     <div className="first"></div>
                     {messages.map((message, i) => {
-                        let timeDif = new Date() - new Date(message.createdAt);
-                            if (author !== message.authorId) {
+                            if (author !== message.authorId || timeDif(message.createdAt)) {
                                 author = message.authorId
                                 if (i === 0) {
                                     return <FirstMessage key={message.id} message={message}/>

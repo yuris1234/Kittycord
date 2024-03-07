@@ -76,7 +76,7 @@ export default function FirstMessage({message}) {
     return (
         <>
             <div className="message-pfp new first" >
-                <img className="pfp" src={author?.pfpUrl} />
+                <img className="pfp" src={author.pfpUrl} />
                 <div className="message new">
                     <ul className="message-show timed">
                         <ul className="message-profile">
