@@ -58,15 +58,18 @@ export default function NewMessage({message}) {
 
     function formatter(createdAt) {
         const date = new Date(createdAt);
+        let day = date.getDay();
+        let month = date.getMonth();
+        let year = date.getFullYear();
         let hours = date.getHours();
         const minutes = ('0' + date.getMinutes()).slice(-2);
         const ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
         hours = hours ? hours : 12; 
         const formattedTime = `${hours}:${minutes} ${ampm}`;
-        return formattedTime;
+        const formattedDate = `${month}/${day}/${year}`;
+        return formattedDate + " " + formattedTime;
       }
-    
 
 
     return (
