@@ -61,23 +61,63 @@ const Message = ({ first, message }) => {
     //     day: "2-digit"
     // });
 
-    function formatter(createdAt) {
-        const date = new Date(createdAt);
+    function formattedTime(date) {
         let hours = date.getHours();
         const minutes = ('0' + date.getMinutes()).slice(-2);
         const ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
         hours = hours ? hours : 12; 
-        const formattedTime = `${hours}:${minutes} ${ampm}`;
-        return formattedTime;
-      }
-    
+        return `${hours}:${minutes} ${ampm}`;
+    }
 
+    function formattedDate(date) {
+        let day = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear();
+        const formattedDate = `${month}/${day}/${year}`;
+        return formattedDate;
+    }
+
+    function formatter(createdAt) {
+        let date = new Date(createdAt);
+        if (today) {
+            return `Today at ${formattedTime(date)}`
+        } else if (yesterday) {
+            return `Yesterday at ${formattedTime(date)}`;
+        } else {
+            return formattedDate(date) + " " + formattedTime(date);
+        }
+      }
+
+    function today(date) {
+        let currentDate = new Date();
+        if (
+            date.getFullYear() === currentDate.getFullYear() &&
+            date.getMonth() === currentDate.getMonth() &&
+            date.getDate() === currentDate.getDate()
+          ) {
+            return true;
+          }
+        return false;
+
+    }
+
+    function yesterday(date) {
+        let currentDate = new Date().getDate() - 1;
+        if (
+            currentDate.getFullYear() === date.getFullYear() &&
+            currentDate.getMonth() === date.getMonth() &&
+            currentDate.getDate() === date.getDate()
+          ) {
+            return true;
+          }
+        return false;
+    }
 
     return (
         <>
             <div ref={ref} className="message-pfp new" >
-                <img className="pfp" src={currentUser.pfpUrl} />
+                <img className="pfp" src={author?.pfpUrl} />
                 <div className="message new">
                     <ul className="message-show timed">
                         <ul className="message-profile">
