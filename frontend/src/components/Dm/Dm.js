@@ -64,15 +64,25 @@ export default function Dm({dmId}) {
         scrollBottom();
     })
 
-    function timeDif(date) {
-        let currentDate = new Date();
-        let pastDate = new Date(date);
-        let dif = Math.abs(currentDate - pastDate)
+    function timeDif(messageDate, recentDate) {
+        let recent = new Date(recentDate);
+        let message = new Date(messageDate);
+        let dif = message - recent;
         let hour = 60 * 60 * 1000;
-        if (dif > hour) {
+        if (Math.abs(message - recent) > hour) {
             return true;
         }
         return false;
+    }
+
+    function messageDivider(messageDate, recentDate) {
+        let currentDate = new Date(messageDate);
+        let nextDay = new Date(recentDate);
+        nextDay.setDate(nextDay.getDate() + 1);
+
+        return nextDay.getFullYear() === currentDate.getFullYear() &&
+            nextDay.getMonth() === currentDate.getMonth() &&
+            nextDay.getDate() === currentDate.getDate();
     }
 
     let author = null;
@@ -83,17 +93,17 @@ export default function Dm({dmId}) {
                 <ul className="dm-container" ref={ref}>
                     <div className="first"></div>
                     {messages.map((message, i) => {
-                            if (author !== message.authorId || timeDif(message.createdAt)) {
+                            let recent = messages[i - 1]
+                            if (author !== message.authorId || timeDif(message.createdAt, recent.createdAt)) {
                                 author = message.authorId
                                 if (i === 0) {
                                     return <FirstMessage key={message.id} message={message}/>
                                 } else {
-                                    return <Message first={i} key={message.id} message={message}/>
+                                    return <Message first={i} key={message.id} message={message} divider={messageDivider(message.createdAt, recent.createdAt)}/>
                                 }
                             } else {
                                 return <UntimedMessage first={i} key={message.id} message={message}/>
                             }
-                        
                     })}
                 </ul>
                     <form className="send-container">

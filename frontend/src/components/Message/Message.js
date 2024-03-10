@@ -9,9 +9,10 @@ import { useHover } from "@uidotdev/usehooks";
 import { useRef } from "react";
 import Edit from "../../assets/edit";
 import Delete from "../../assets/delete";
+import MessageDivider from "./MessageDivider";
 
 
-const Message = ({ first, message }) => {
+const Message = ({ first, message, divider }) => {
     const dispatch = useDispatch();
     // const [hovered, setHovered] = useState(false);
     const modal = useSelector(state => state.modals);
@@ -80,9 +81,9 @@ const Message = ({ first, message }) => {
 
     function formatter(createdAt) {
         let date = new Date(createdAt);
-        if (today) {
+        if (today(date)) {
             return `Today at ${formattedTime(date)}`
-        } else if (yesterday) {
+        } else if (yesterday(date)) {
             return `Yesterday at ${formattedTime(date)}`;
         } else {
             return formattedDate(date) + " " + formattedTime(date);
@@ -103,7 +104,7 @@ const Message = ({ first, message }) => {
     }
 
     function yesterday(date) {
-        let currentDate = new Date().getDate() - 1;
+        let currentDate = new Date(new Date().setDate(new Date().getDate() - 1));
         if (
             currentDate.getFullYear() === date.getFullYear() &&
             currentDate.getMonth() === date.getMonth() &&
@@ -116,6 +117,7 @@ const Message = ({ first, message }) => {
 
     return (
         <>
+            <MessageDivider divider={divider}/>
             <div ref={ref} className="message-pfp new" >
                 <img className="pfp" src={author?.pfpUrl} />
                 <div className="message new">
